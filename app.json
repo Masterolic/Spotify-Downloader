@@ -1,0 +1,39 @@
+{
+  "name": "You Need Music",
+  "description": "A simple Telegram bot to download music.",
+  "keywords": [
+    "bot",
+    "music",
+    "productivity"
+  ],
+  "repository": "https://github.com/rozari0/MusicBot/",
+  "website": "https://t.me/NeedMusicRobot",
+  "success_url": "https://t.me/NeedMusicRobot",
+  "env": {
+    "API_ID": {
+      "description": "give your api",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
+    },
+    "BOT_TOKEN": {
+      "description": "Make a bot at http://telegram.dog/BotFather and get the token of your bot.Worth it. Get it.",
+      "value": ""
+    },
+    "SPOTIPY_CLIENT_SECRET": {
+      "description": "Spitify Secret",
+      "value": "0f02b7c483c04257984695007a4a8d5c",
+    },
+    "SPOTIPY_CLIENT_ID": {
+      "description": "Spitify id",
+      "value": "4fe3fecfe5334023a1472516cc99d805",
+    }
+  },
+  "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  },{
+    "url": "heroku/python"
+  }]
+}

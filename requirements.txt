@@ -1,0 +1,6 @@
+pyrogram
+youtube-dl
+git+https://github.com/rozari0/spotify-dl.git
+aiohttp
+tgcrypto
+python-dotenv
