@@ -1,6 +1,12 @@
+setuptools
 pyrogram
+dnspython
+motor
 youtube-dl
+yt-dlp
 git+https://github.com/rozari0/spotify-dl.git
+wget
+deezer-python
 aiohttp
 tgcrypto
 python-dotenv

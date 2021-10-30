@@ -1,8 +1,9 @@
-from bot import LOG_GROUP
+from bot import LOG_GROUP,UPDATES_CHANNEL
 from pyrogram import Client, filters
 import requests,shutil,os,wget
 from random import randint
 from .youtubemusic import ytdl_down
+from ..helpers.force_sub_handler import handle_force_sub
 
 def audio_opt(title,path):
     audio_opts = {
@@ -31,6 +32,10 @@ api_base = "https://jiosaavnapi.up.railway.app/"
 
 @Client.on_message(filters.regex(r'https?://.*jiosaavn[^\s]+') & filters.private)
 async def link_handler(client, message):
+    if UPDATES_CHANNEL is not None:
+        back = await handle_force_sub(client, message)
+        if back == 400:
+            return
     link = message.matches[0].group(0)
     data = requests.get(f"{api_base}song/?query={link}").json()
     forcopydata = await message.reply_photo(photo=data['image'],caption=f"🎧 Title : `{data['song']}`\n📚 Album : `{data['album']}`\n🎤 Artist : `{data['primary_artists']}`\n🎤 Language : `{data['language']}`\n{data['copyright_text']}")

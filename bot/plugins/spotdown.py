@@ -1,8 +1,9 @@
 from pyrogram import Client, filters
 import aiohttp,spotipy,re
-from bot import LOG_GROUP
+from bot import LOG_GROUP,UPDATES_CHANNEL
 from bot.helpers import spotify
 from spotify_dl import spotify_dl
+from ..helpers.force_sub_handler import handle_force_sub
 from bot import SPOTIPY_CLIENT_ID,SPOTIPY_CLIENT_SECRET
 from spotipy.oauth2 import SpotifyClientCredentials
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(SPOTIPY_CLIENT_ID,SPOTIPY_CLIENT_SECRET))
@@ -10,6 +11,10 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(SPOTIPY_CLIENT_ID,SPO
 
 @Client.on_message(filters.regex(r'https?://open.spotify.com[^\s]+') & filters.private)
 async def link_handler(client, message):
+    if UPDATES_CHANNEL is not None:
+        back = await handle_force_sub(client, message)
+        if back == 400:
+            return
     link = url = re.search("(?P<url>https?://[^\s]+)", message.text).group("url")
     try:
         if spotify.parse_spotify_url(link)=="track":
