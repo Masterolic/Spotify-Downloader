@@ -4,7 +4,7 @@
   "keywords": [
     "bot",
     "music",
-    "music downloader",
+    "music downloader"
   ],
   "repository": "https://github.com/rozari0/MusicDownloader/",
   "website": "https://t.me/NeedMusicRobot",
@@ -24,15 +24,15 @@
     },
     "SPOTIPY_CLIENT_SECRET": {
       "description": "Your Spotify Client Secret",
-      "value": "0f02b7c483c04257984695007a4a8d5c",
+      "value": "0f02b7c483c04257984695007a4a8d5c"
     },
     "SPOTIPY_CLIENT_ID": {
       "description": "Your Spotify Client ID",
-      "value": "4fe3fecfe5334023a1472516cc99d805",
+      "value": "4fe3fecfe5334023a1472516cc99d805"
     },
     "AUTH_CHATS": {
       "description": "Authorized chats",
-      "value": "",
+      "value": ""
     },
     "UPDATES_CHANNEL": {
       "description": "Force subscription to updates channel",
@@ -41,12 +41,12 @@
     },
     "LOG_GROUP": {
       "description": "Downloaded Music Log Group",
-      "value": "",
+      "value": ""
     },
     "DATABASE_URL": {
       "description": "MongoDB URL",
-      "value": "",
-    },
+      "value": ""
+    }
   },
   "buildpacks": [{
     "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"

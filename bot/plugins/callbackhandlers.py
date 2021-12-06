@@ -16,7 +16,7 @@ async def button(bot: Client, cmd: CallbackQuery):
                 [
                     [
                         InlineKeyboardButton("Source Codes of Bot",
-                                             url="https://github.com/rozari0")
+                                             url="https://github.com/rozari0/MusicDownloader/")
                     ]
                 ]
             )

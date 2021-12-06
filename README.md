@@ -43,7 +43,7 @@ To deploy this project run
   docker run musicbot
 ```
 ### Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/rozari0/MusicDownloader/)
 
 ### Railway
 May not work because this project required Ytdl.
