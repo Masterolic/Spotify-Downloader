@@ -4,14 +4,14 @@
   "keywords": [
     "bot",
     "music",
-    "productivity"
+    "music downloader",
   ],
-  "repository": "https://github.com/rozari0/MusicBot/",
+  "repository": "https://github.com/rozari0/MusicDownloader/",
   "website": "https://t.me/NeedMusicRobot",
   "success_url": "https://t.me/NeedMusicRobot",
   "env": {
     "API_ID": {
-      "description": "give your api",
+      "description": "Your Telegram API ID",
       "value": ""
     },
     "API_HASH": {
@@ -23,13 +23,30 @@
       "value": ""
     },
     "SPOTIPY_CLIENT_SECRET": {
-      "description": "Spitify Secret",
+      "description": "Your Spotify Client Secret",
       "value": "0f02b7c483c04257984695007a4a8d5c",
     },
     "SPOTIPY_CLIENT_ID": {
-      "description": "Spitify id",
+      "description": "Your Spotify Client ID",
       "value": "4fe3fecfe5334023a1472516cc99d805",
-    }
+    },
+    "AUTH_CHATS": {
+      "description": "Authorized chats",
+      "value": "",
+    },
+    "UPDATES_CHANNEL": {
+      "description": "Force subscription to updates channel",
+      "value": "",
+      "requerd": false
+    },
+    "LOG_GROUP": {
+      "description": "Downloaded Music Log Group",
+      "value": "",
+    },
+    "DATABASE_URL": {
+      "description": "MongoDB URL",
+      "value": "",
+    },
   },
   "buildpacks": [{
     "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"

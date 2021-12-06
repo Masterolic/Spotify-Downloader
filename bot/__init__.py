@@ -15,3 +15,6 @@ DEEZER_EMAIL = str(environ.get("DEEZER_EMAIL"))
 DATABASE_URL = str(environ.get("DATABASE_URL"))
 UPDATES_CHANNEL = str(environ.get("UPDATES_CHANNEL",None))
 LOG_GROUP = str(environ.get("LOG_GROUP",None))
+AUTH_CHATS = str(environ.get("AUTH_CHATS","-1001543575981")).split(" ")
+for i in range(len(AUTH_CHATS)):
+    AUTH_CHATS[i] = int(AUTH_CHATS[i])
