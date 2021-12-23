@@ -10,7 +10,7 @@ from ..helpers.deezerhelper import parse_deezer_url,fetch_tracks,download_now,ar
 class ReplyKeyboard(ReplyKeyboardMarkup):
     def __init__(self, resize_keyboard=None, one_time_keyboard=None,
                  selective=None, row_width=3):
-        self.keyboard = list()
+        self.keyboard = []
         super().__init__(
             keyboard=self.keyboard,
             resize_keyboard=resize_keyboard,
@@ -26,7 +26,7 @@ class ReplyKeyboard(ReplyKeyboardMarkup):
         ]
 
     def row(self, *args):
-        self.keyboard.append([button for button in args])
+        self.keyboard.append(list(args))
 
 @Client.on_message(filters.regex(r'https?://.*deezer[^\s]+') & filters.private)
 async def link_handler(client, message):
@@ -41,7 +41,7 @@ async def link_handler(client, message):
         item_type = itemss[0]
         item_id = itemss[1]
         songs = fetch_tracks(client,item_type,item_id)
-        if item_type == "playlist" or item_type == "album" or item_type == "track":
+        if item_type in ["playlist", "album", "track"]:
             for song in songs:
                 forcopydata = await message.reply_photo(photo=song['cover'],caption=f"🎧 Title : `{song['name']}`\n🎤 Artist : `{song['artist']}`\n🎤 Album : `{song['album']}`\n🎤 Song Number : `{song['playlist_num']}`")
                 performer = song['artist']

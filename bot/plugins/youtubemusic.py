@@ -18,7 +18,7 @@ def getPlaylistLinks(url: str) -> map:
 
 
 def audio_opt(path):
-    audio_opts = {
+    return {
         "format": "bestaudio",
         "addmetadata": True,
         "key": "FFmpegMetadata",
@@ -38,21 +38,18 @@ def audio_opt(path):
         "quiet": True,
         "logtostderr": False,
     }
-    return audio_opts
 
 def ydl_data(opts, url):
     try:
         with YoutubeDL(opts) as ytdl:
-            ytdl_data = ytdl.extract_info(url,download=False)
-            return ytdl_data
+            return ytdl.extract_info(url,download=False)
     except Exception as e:
         return e
 
 async def ytdl_down(opts, url,randomdir):
     with youtube_dl.YoutubeDL(opts) as ydl:
         a = ydl.download([url])
-        files = glob.glob(f'{randomdir}/**/*.mp3', recursive=True)
-        return files
+        return glob.glob(f'{randomdir}/**/*.mp3', recursive=True)
 
 
 @Client.on_message(filters.regex(r'https?://.*you[^\s]+') & filters.private)
@@ -84,25 +81,22 @@ async def link_handler(client, message):
             return
 
 
-        if "playlist" not in link:
-            ytdl_data = ydl_data(audio_opt("."), link)
-            try:
-                performer = ytdl_data['artist']
-            except:
-                performer = ytdl_data['uploader']
-            forcopydata = await message.reply_photo(photo=f"https://i.ytimg.com/vi/{ytdl_data['id']}/hqdefault.jpg",caption=f"🎧 Title : `{ytdl_data['title']}`\n🎤 Artist : `{performer}`")
-            randomdir = "/tmp/"+str(randint(1,100000000))
-            os.mkdir(randomdir)
-            files = await ytdl_down(audio_opt(randomdir),link,randomdir)
-            thumbnail = wget.download(f"https://i.ytimg.com/vi/{ytdl_data['id']}/sddefault.jpg")
-            forcopyaudio = await message.reply_audio(audio=files[0],thumb=thumbnail,performer=performer,duration=ytdl_data['duration'])
-            if LOG_GROUP is not None:
-                await forcopydata.copy(LOG_GROUP)
-                await forcopyaudio.copy(LOG_GROUP)
-            shutil.rmtree(randomdir)
-        
-        else:
-            await message.reply_text("Please use a valid link. (Channel link not supported)")
+        ytdl_data = ydl_data(audio_opt("."), link)
+        try:
+            performer = ytdl_data['artist']
+        except:
+            performer = ytdl_data['uploader']
+        forcopydata = await message.reply_photo(photo=f"https://i.ytimg.com/vi/{ytdl_data['id']}/hqdefault.jpg",caption=f"🎧 Title : `{ytdl_data['title']}`\n🎤 Artist : `{performer}`")
+        randomdir = "/tmp/"+str(randint(1,100000000))
+        os.mkdir(randomdir)
+        files = await ytdl_down(audio_opt(randomdir),link,randomdir)
+        thumbnail = wget.download(f"https://i.ytimg.com/vi/{ytdl_data['id']}/sddefault.jpg")
+        forcopyaudio = await message.reply_audio(audio=files[0],thumb=thumbnail,performer=performer,duration=ytdl_data['duration'])
+        if LOG_GROUP is not None:
+            await forcopydata.copy(LOG_GROUP)
+            await forcopyaudio.copy(LOG_GROUP)
+        shutil.rmtree(randomdir)
+
     except Exception as e:
         await message.reply(f'Error: {e}', quote=True)
         shutil.rmtree(randomdir)
@@ -139,25 +133,22 @@ async def yta_handler(client, message):
             return
 
 
-        if "playlist" not in link:
-            ytdl_data = ydl_data(audio_opt("."), link)
-            try:
-                performer = ytdl_data['artist']
-            except:
-                performer = ytdl_data['uploader']
-            forcopydata = await message.reply_photo(photo=f"https://i.ytimg.com/vi/{ytdl_data['id']}/hqdefault.jpg",caption=f"🎧 Title : `{ytdl_data['title']}`\n🎤 Artist : `{performer}`")
-            randomdir = "/tmp/"+str(randint(1,100000000))
-            os.mkdir(randomdir)
-            files = await ytdl_down(audio_opt(randomdir),link,randomdir)
-            thumbnail = wget.download(f"https://i.ytimg.com/vi/{ytdl_data['id']}/sddefault.jpg")
-            forcopyaudio = await message.reply_audio(audio=files[0],thumb=thumbnail,performer=performer,duration=ytdl_data['duration'])
-            if LOG_GROUP is not None:
-                await forcopydata.copy(LOG_GROUP)
-                await forcopyaudio.copy(LOG_GROUP)
-            shutil.rmtree(randomdir)
-        
-        else:
-            await message.reply_text("Please use a valid link. (Channel link not supported)")
+        ytdl_data = ydl_data(audio_opt("."), link)
+        try:
+            performer = ytdl_data['artist']
+        except:
+            performer = ytdl_data['uploader']
+        forcopydata = await message.reply_photo(photo=f"https://i.ytimg.com/vi/{ytdl_data['id']}/hqdefault.jpg",caption=f"🎧 Title : `{ytdl_data['title']}`\n🎤 Artist : `{performer}`")
+        randomdir = "/tmp/"+str(randint(1,100000000))
+        os.mkdir(randomdir)
+        files = await ytdl_down(audio_opt(randomdir),link,randomdir)
+        thumbnail = wget.download(f"https://i.ytimg.com/vi/{ytdl_data['id']}/sddefault.jpg")
+        forcopyaudio = await message.reply_audio(audio=files[0],thumb=thumbnail,performer=performer,duration=ytdl_data['duration'])
+        if LOG_GROUP is not None:
+            await forcopydata.copy(LOG_GROUP)
+            await forcopyaudio.copy(LOG_GROUP)
+        shutil.rmtree(randomdir)
+
     except TypeError:
         await message.reply_text("/yta [link]")
     except Exception as e:
