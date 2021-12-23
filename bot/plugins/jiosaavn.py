@@ -6,7 +6,7 @@ from .youtubemusic import ytdl_down
 from ..helpers.force_sub_handler import handle_force_sub
 
 def audio_opt(title,path):
-    audio_opts = {
+    return {
         "format": "bestaudio",
         "addmetadata": True,
         "key": "FFmpegMetadata",
@@ -26,7 +26,6 @@ def audio_opt(title,path):
         "quiet": True,
         "logtostderr": False,
     }
-    return audio_opts
 
 api_base = "https://jiosaavnapi.up.railway.app/"
 

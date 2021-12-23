@@ -33,7 +33,7 @@ async def button(bot: Client, cmd: CallbackQuery):
                         disable_web_page_preview=False
                     )
                     return
-                elif user.status != 'kicked' and user.status !='left'and user.status !='left':
+                elif user.status != 'left':
                     await cmd.message.edit(
                         text="Hello {}, You are Approve To Use This Bot".format(cmd.message.chat.first_name),
                         parse_mode="Markdown",

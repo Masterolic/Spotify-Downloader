@@ -129,8 +129,7 @@ def parse_spotify_url(url):
     if url.startswith("spotify:"):
         print("gib meh spotify limk.")
     parsed_url = url.replace("https://open.spotify.com/", "")
-    item_type = parsed_url.split("/")[0]
-    return item_type
+    return parsed_url.split("/")[0]
 
 
 def get_item_name(sp, item_type, item_id):

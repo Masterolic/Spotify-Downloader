@@ -94,15 +94,20 @@ def download_songs(songs, download_directory='.', format_string="bestaudio/best"
         outtmpl = f"{file_path}.%(ext)s"
         ydl_opts = {
             'format': format_string,
-            'outtmpl': outtmpl,
             'default_search': 'ytsearch',
             "preferredcodec": "mp3",
             'noplaylist': True,
             "outtmpl": f"{file_path}.mp3",
-            'postprocessor_args': ['-metadata', 'title=' + song.get('name'),
-                                   '-metadata', 'artist=' + song.get('artist'),
-                                   '-metadata', 'album=' + song.get('album')]
+            'postprocessor_args': [
+                '-metadata',
+                'title=' + song.get('name'),
+                '-metadata',
+                'artist=' + song.get('artist'),
+                '-metadata',
+                'album=' + song.get('album'),
+            ],
         }
+
         if not skip_mp3:
             mp3_postprocess_opts = {
                 'key': 'FFmpegExtractAudio',
@@ -148,5 +153,4 @@ def artist_data(dz,artist_id):
 def download_now(dz,url,download_directory="."):
     parsed = parse_deezer_url(url)
     fetched = fetch_tracks(dz,parsed[0],parsed[1])
-    path_links = download_songs(fetched,download_directory=download_directory)
-    return path_links
+    return download_songs(fetched,download_directory=download_directory)

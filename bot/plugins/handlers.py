@@ -19,4 +19,5 @@ async def start(client, message):
 @Client.on_message(filters.command('help') & filters.private)
 async def help(client, message):
     await message.reply(
-        f"**Just Send Me Spotify, Deezer, JioSaavn Youtube or Youtube Music Link!**")
+        '**Just Send Me Spotify, Deezer, JioSaavn Youtube or Youtube Music Link!**'
+    )
