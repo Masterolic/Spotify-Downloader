@@ -6,7 +6,7 @@
     "music",
     "music downloader"
   ],
-  "repository": "https://github.com/rozari0/MusicDownloader/",
+  "repository": "https://github.com/rozari0/NeedMusicRobot/",
   "website": "https://t.me/NeedMusicRobot",
   "success_url": "https://t.me/NeedMusicRobot",
   "env": {
@@ -22,35 +22,35 @@
       "description": "Make a bot at http://telegram.dog/BotFather and get the token of your bot.Worth it. Get it.",
       "value": ""
     },
+    "OWNER_ID": {
+      "description": "The ID of the owner of the bot",
+      "value": ""
+    },
+    "SUDO_USERS": {
+      "description": "The ID of the sudo users of the bot",
+      "value": "",
+      "required": false
+    },
+    "AUTH_CHATS": {
+      "description": "The ID of the authorized chats of the bot",
+      "value": "",
+      "required": false
+    },
+    "LOG_GROUP": {
+      "description": "The ID of the group to log to",
+      "value": "",
+      "required": false
+    },
     "SPOTIPY_CLIENT_SECRET": {
-      "description": "Your Spotify Client Secret",
+      "description": "The client secret of the Spotify API",
       "value": "0f02b7c483c04257984695007a4a8d5c"
     },
     "SPOTIPY_CLIENT_ID": {
-      "description": "Your Spotify Client ID",
+      "description": "The client ID of the Spotify API",
       "value": "4fe3fecfe5334023a1472516cc99d805"
-    },
-    "AUTH_CHATS": {
-      "description": "Authorized chats",
-      "value": ""
-    },
-    "UPDATES_CHANNEL": {
-      "description": "Force subscription to updates channel",
-      "value": "",
-      "requerd": false
-    },
-    "LOG_GROUP": {
-      "description": "Downloaded Music Log Group",
-      "value": ""
-    },
-    "DATABASE_URL": {
-      "description": "MongoDB URL",
-      "value": ""
     }
   },
   "buildpacks": [{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  },{
     "url": "heroku/python"
   }]
 }
