@@ -51,9 +51,10 @@ if OWNER_ID not in SUDO_USERS:
     SUDO_USERS.append(OWNER_ID)
 AUTH_CHATS = environ.get('AUTH_CHATS','-1001576243355').split()
 AUTH_CHATS = [int(_x) for _x in AUTH_CHATS]
-if LOG_GROUP := environ.get("LOG_GROUP", None):
-    int(LOG_GROUP)
-
+LOG_GROUP = environ.get("LOG_GROUP", None)
+if LOG_GROUP:
+    LOG_GROUP = int(LOG_GROUP)
+    
 class Mbot(Client):
     def  __init__(self):
         name = self.__class__.__name__.lower()
