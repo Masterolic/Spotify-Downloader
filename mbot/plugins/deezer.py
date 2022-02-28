@@ -42,7 +42,7 @@ async def link_handler(_, message):
         m = await message.reply_text("Gathering information... Please Wait.")
         songs = await fetch_tracks(client,item_type,item_id)
         if item_type in ["playlist", "album", "track"]:
-            randomdir = "/tmp/"+str(randint(1,100000000))
+            randomdir = f"/tmp/{str(randint(1,100000000))}"
             mkdir(randomdir)
             for song in songs:
                 PForCopy = await message.reply_photo(song.get('cover'),caption=f"🎧 Title : `{song['name']}`\n🎤 Artist : `{song['artist']}`\n💽 Album : `{song['album']}`\n💽 Song Number : `{song['playlist_num']}`")
