@@ -46,7 +46,10 @@ def parse_spotify_url(url):
 @sync_to_async
 def thumb_down(link,name):
     with open(f"/tmp/thumbnails/{name}.jpg","wb") as file:
-        file.write(get(link).content)
+        if get(link).status_code == 200:
+            file.write(get(link).content)
+        else:
+            file.write(get("https://telegra.ph/file/39bf16afe2fb5b0f13be3.jpg").content)
     return f"/tmp/thumbnails/{name}.jpg"
 
 @sync_to_async
