@@ -9,3 +9,14 @@ I made this bot in support as a inline mode with 10k files we was having under 1
 # Is this edited ? 
 
 Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) support 128 you can use any you want :)
+
+# Variables
+
+API_ID API_HASH BOT_TOKEN SPOTIPY_CLIENT_ID SPOTIPY_CLIENT_SECRET UPDATES_CHANNEL LOG_GROUP  AUTH_CHATS
+
+#Deploy
+
+Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/blob/4d98480ec837325d38eedd20886a748c5d6fa598/config.env#L12apt install ffmpeg -y 
+
+*Step 1* ⚙️ `pip install --upgrade pip `
+python3 -m mbot  
