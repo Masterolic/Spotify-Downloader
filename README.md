@@ -21,12 +21,17 @@ Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) supp
 `LOG_GROUP`
 `AUTH_CHATS`
 
-#Deploy
+# Deploy
 
 Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/blob/4d98480ec837325d38eedd20886a748c5d6fa598/config.env#L12)
 
 *Step 1* ⚙️ `apt update && apt upgrade && apt install ffmpeg -y' `
 
-*Step 2* ⚙️ 'pip install --upgrade pip && pip install -r requirements.text'
+*Step 2* ⚙️ `pip install --upgrade pip && pip install -r requirements.text`
 
-*Step 3* ⚙️ 'python3 -m mbot'
+*Step 3* ⚙️ `python3 -m mbot`
+
+# Donate me 😪
+Please donate me and support  Only  if you are Rich 🥺 🤑❤️ if you are poor don't worry me to same 🥺❤️
+Donate here 🤩🤩🤩 [click here 🤩| https://www.buymeacoffee.com/Masterolic]
+Donate if you really love our bot 🥰
