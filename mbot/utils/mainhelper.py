@@ -138,9 +138,13 @@ def download_songs(song, download_directory='.'):
         "nocheckcertificate": True,
         "outtmpl": f"{download_directory}/%(title)s.mp3",
         "quiet": True,
-        "addmetadata": True
-    }
+        "addmetadata": True,
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
 
+        "nocheckcertificate": True,
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '720'}],
+    }
     with YoutubeDL(ydl_opts) as ydl:
         try:
             video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
