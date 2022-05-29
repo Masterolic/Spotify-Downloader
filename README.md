@@ -22,14 +22,14 @@ Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) supp
 
 # Variables
 
-`API_ID`  api Id and hash get it from  [Telegram](my.telegram.org)
-`API_HASH`
+`API_ID`  
+`API_HASH`api Id and hash get it from  [Telegram](my.telegram.org)
 `BOT_TOKEN`get it from [@BotFather](https://t.me/BotFather)
-`SPOTIPY_CLIENT_ID`get it from [Spotify](developers.spotify.com)
-`SPOTIPY_CLIENT_SECRET`
-`UPDATES_CHANNEL`Get IDs add a group management bot and type /id
+`SPOTIPY_CLIENT_ID`
+`SPOTIPY_CLIENT_SECRET`get it from [Spotify](developers.spotify.com)
+`UPDATES_CHANNEL`
 `LOG_GROUP`
-`AUTH_CHATS`
+`AUTH_CHATS`Get IDs add a group management bot and type /id
 
 # DEPLOY
 
