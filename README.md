@@ -1,4 +1,13 @@
 Hey this is a official old  repo of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot)
+
+# Donate me 🍪
+Please donate me and support  Only  if you are Rich 🥺 🤑❤️ if you are poor don't worry me to same 🥺❤️
+Donate here 🤩🤩🤩 [🤩click here 🤩](https://www.buymeacoffee.com/Masterolic)
+Donate if you really love our bot 🥰
+
+# RATE Our bot 
+Rate the bot [FEEDBACK](https://t.me/dailychannelsbot?start=spotify_downloa_bot)
+
 # ABOUT
 A Simple Music Downloader Bot For Telegram Spotify Support
 # why I made this repo open ?
@@ -9,6 +18,7 @@ I made this bot in support as a inline mode with 10k files we was having under 1
 # Is this edited ? 
 
 Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) support 128 you can use any you want :)
+
 
 # Variables
 
@@ -21,7 +31,7 @@ Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) supp
 `LOG_GROUP`
 `AUTH_CHATS`
 
-# Deploy
+# DEPLOY
 
 Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/blob/4d98480ec837325d38eedd20886a748c5d6fa598/config.env#L12)
 
@@ -31,7 +41,7 @@ Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/bl
 
 *Step 3* ⚙️ `python3 -m mbot`
 
-# Donate me 😪
-Please donate me and support  Only  if you are Rich 🥺 🤑❤️ if you are poor don't worry me to same 🥺❤️
-Donate here 🤩🤩🤩 [🤩click here 🤩](https://www.buymeacoffee.com/Masterolic)
-Donate if you really love our bot 🥰
+
+# CONTACT OWNER 
+
+You can reach me here https://t.me/masterolic
