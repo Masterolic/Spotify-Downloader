@@ -12,7 +12,14 @@ Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) supp
 
 # Variables
 
-'API_ID' 'API_HASH' 'BOT_TOKEN' 'SPOTIPY_CLIENT_ID' 'SPOTIPY_CLIENT_SECRET' 'UPDATES_CHANNEL' 'LOG_GROUP'  'AUTH_CHATS'
+`API_ID` 
+`API_HASH`
+`BOT_TOKEN`
+`SPOTIPY_CLIENT_ID` 
+`SPOTIPY_CLIENT_SECRET`
+`UPDATES_CHANNEL` 
+`LOG_GROUP`
+`AUTH_CHATS`
 
 #Deploy
 
