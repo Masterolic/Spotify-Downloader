@@ -33,5 +33,5 @@ Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/bl
 
 # Donate me 😪
 Please donate me and support  Only  if you are Rich 🥺 🤑❤️ if you are poor don't worry me to same 🥺❤️
-Donate here 🤩🤩🤩 [click here 🤩| https://www.buymeacoffee.com/Masterolic]
+Donate here 🤩🤩🤩 [🤩click here 🤩](https://www.buymeacoffee.com/Masterolic)
 Donate if you really love our bot 🥰
