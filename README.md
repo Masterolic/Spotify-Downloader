@@ -1,5 +1,8 @@
 Hey this is a official old  repo of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot)
 
+# Hey welcome 
+[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Welcome+to+My+GitHub+Profile)](https://git.io/typing-svg)
+
 # Donate me 🍪
 Please donate me and support  Only  if you are Rich 🥺 🤑❤️ if you are poor don't worry me to same 🥺❤️
 Donate here 🤩🤩🤩 [🤩click here 🤩](https://www.buymeacoffee.com/Masterolic)
