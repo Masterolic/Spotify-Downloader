@@ -1,14 +1,14 @@
 {
-  "name": "You Need Music",
+  "name": "Spotify Downloa",
   "description": "A simple Telegram bot to download music.",
   "keywords": [
     "bot",
     "music",
     "music downloader"
   ],
-  "repository": "https://github.com/rozari0/NeedMusicRobot/",
-  "website": "https://t.me/NeedMusicRobot",
-  "success_url": "https://t.me/NeedMusicRobot",
+  "repository": "https://github.com/masterolic/",
+  "website": "https://t.me/Spotify_downloa",
+  "success_url": "https://t.me/spotify_downloa_bot",
   "env": {
     "API_ID": {
       "description": "Your Telegram API ID",
@@ -50,7 +50,12 @@
       "value": "4fe3fecfe5334023a1472516cc99d805"
     }
   },
-  "buildpacks": [{
-    "url": "heroku/python"
-  }]
+"buildpacks": [
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
 }
