@@ -24,6 +24,9 @@ SOFTWARE.
 from pyrogram import Client
 from os import environ,sys,mkdir,path
 import logging
+from sys import executable
+from Python_ARQ import ARQ
+from aiohttp import ClientSession
 from dotenv import load_dotenv
 load_dotenv("config.env")
 
@@ -54,6 +57,11 @@ AUTH_CHATS = [int(_x) for _x in AUTH_CHATS]
 LOG_GROUP = environ.get("LOG_GROUP", None)
 if LOG_GROUP:
     LOG_GROUP = int(LOG_GROUP)
+ARQ_API_KEY = "BCYRIL-MQWGOV-EFUFVU-XYZBFU-ARQ"
+ARQ_API_URL = "https://arq.hamker.in"
+aiohttpsession = ClientSession()
+arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+
     
 class Mbot(Client):
     def  __init__(self):
@@ -74,7 +82,7 @@ class Mbot(Client):
         if not path.exists('/tmp/thumbnails/'):
             mkdir('/tmp/thumbnails/')
         for chat in AUTH_CHATS:
-            await self.send_photo(chat,"https://i.ibb.co/mtGCrzm/youNeedMusic.jpg","**Bot Started.**")
+            await self.send_photo(chat,"https://telegra.ph/file/97bc8a091ac1b119b72e4.jpg","**Spotify Downloa Started**")
         LOGGER.info(f"Bot Started As {BOT_INFO.username}\n")
     
     async def stop(self,*args):
