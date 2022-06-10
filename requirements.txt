@@ -1,4 +1,4 @@
-pyrogram
+pyrogram==1.4.16
 tgcrypto
 yt-dlp
 python-dotenv
@@ -6,3 +6,7 @@ requests
 asgiref
 deezer-python
 spotipy
+psutil
+youtube-dl
+python-arq
+aiohttp
