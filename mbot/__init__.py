@@ -57,7 +57,8 @@ AUTH_CHATS = [int(_x) for _x in AUTH_CHATS]
 LOG_GROUP = environ.get("LOG_GROUP", None)
 if LOG_GROUP:
     LOG_GROUP = int(LOG_GROUP)
-ARQ_API_KEY = "BCYRIL-MQWGOV-EFUFVU-XYZBFU-ARQ"
+  # Get It From @ARQRobot
+ARQ_API_KEY = ""
 ARQ_API_URL = "https://arq.hamker.in"
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
