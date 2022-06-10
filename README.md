@@ -33,7 +33,7 @@ Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) supp
 `UPDATES_CHANNEL`
 `LOG_GROUP`
 `AUTH_CHATS`Get IDs add a group management bot and type /id
-
+`ARQ_API_KEY`Get it from @ARQRobot and paste [here](https://github.com/Masterolic/Spotify-Downloader/blob/38dcc1788a55542ae6ef686f78e644f312faefde/mbot/__init__.py#L61)
 # DEPLOY
 
 Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/blob/4d98480ec837325d38eedd20886a748c5d6fa598/config.env#L12)
