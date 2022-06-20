@@ -38,7 +38,7 @@ Yes this support 320 [real repo](https://github.com/rozari0/NeedMusicRobot) supp
 
 Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/blob/4d98480ec837325d38eedd20886a748c5d6fa598/config.env#L12)
 
-*Step 1* ⚙️ `apt update && apt upgrade && apt install ffmpeg -y' `
+*Step 1* ⚙️ `apt update && apt upgrade && apt install ffmpeg -y `
 
 *Step 2* ⚙️ `pip install --upgrade pip && pip install -r requirements.text`
 
