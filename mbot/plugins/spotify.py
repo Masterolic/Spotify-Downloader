@@ -37,8 +37,8 @@ from mutagen import File
 from mutagen.flac import FLAC ,Picture
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 client = spotipy.Spotify(auth_manager=spotipy.oauth2.SpotifyClientCredentials())
-PICS = ("mbot/1162775.jpg mbot/danny-howe-bn-D2bCvpik-unsplash.jpg mbot/saurabh-gill-38RthwbB3nE-unsplash.jpg").split()
-BUG = "-1001744816254"
+#PICS = ("mbot/1162775.jpg mbot/danny-howe-bn-D2bCvpik-unsplash.jpg mbot/saurabh-gill-38RthwbB3nE-unsplash.jpg").split()
+BUG = "" #put your log group id here for error logs 
 @Mbot.on_message(filters.regex(r'https?://open.spotify.com[^\s]+') & filters.incoming &  ~filters.edited | filters.regex(r'https?://open.spotify.com[^\s]+') & filters.command(["spotify","spotdl"]) | filters.incoming & ~filters.edited & filters.regex(r"spotify:") & filters.chat(AUTH_CHATS))
 async def spotify_dl(_,message):
     link = message.matches[0].group(0)
