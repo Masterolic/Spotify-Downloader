@@ -26,7 +26,7 @@ from yt_dlp import YoutubeDL
 from mbot import LOGGER,LOG_GROUP
 from requests import get
 from asgiref.sync import sync_to_async
-BUG = "-1001744816254"
+BUG = "" #put your log error I'd here :)
 @sync_to_async
 def parse_deezer_url(url):
     url = get(url).url
