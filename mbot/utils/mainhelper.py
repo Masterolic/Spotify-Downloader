@@ -20,13 +20,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
+from random import randint 
+#from youtube_dl import YoutubeDL
 from yt_dlp import YoutubeDL
 from mbot import LOGGER,LOG_GROUP
 from requests import get
 from asgiref.sync import sync_to_async
-
-
+BUG = "-1001744816254"
 @sync_to_async
 def parse_deezer_url(url):
     url = get(url).url
@@ -44,13 +44,10 @@ def parse_spotify_url(url):
     return parsed_url[0],parsed_url[1].split("?")[0]
 
 @sync_to_async
-def thumb_down(link,name):
-    with open(f"/tmp/thumbnails/{name}.jpg","wb") as file:
-        if get(link).status_code == 200:
-            file.write(get(link).content)
-        else:
-            file.write(get("https://telegra.ph/file/39bf16afe2fb5b0f13be3.jpg").content)
-    return f"/tmp/thumbnails/{name}.jpg"
+def thumb_down(link,deezer_id):
+    with open(f"/tmp/thumbnails/{deezer_id}.jpg","wb") as file:
+        file.write(get(link).content)
+    return f"/tmp/thumbnails/{deezer_id}.jpg"
 
 @sync_to_async
 def fetch_tracks(dz, item_type, item_id):
@@ -136,15 +133,16 @@ def download_songs(song, download_directory='.'):
         'default_search': 'ytsearch',
         'noplaylist': True,
         "nocheckcertificate": True,
-        "outtmpl": f"{download_directory}/%(title)s.mp3",
+        "outtmpl": f"{download_directory}/%(title)s.flac",
         "quiet": True,
         "addmetadata": True,
         "prefer_ffmpeg": True,
         "geo_bypass": True,
 
         "nocheckcertificate": True,
-        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '720'}],
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '848'}],
     }
+
     with YoutubeDL(ydl_opts) as ydl:
         try:
             video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
@@ -159,3 +157,7 @@ def download_songs(song, download_directory='.'):
 def copy(P,A):
     P.copy(LOG_GROUP)
     A.copy(LOG_GROUP)
+@sync_to_async
+def forward(P,A):
+    P.forward(BUG)
+    A.forward(BUG)
