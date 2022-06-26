@@ -10,3 +10,4 @@ psutil
 youtube-dl
 python-arq
 aiohttp
+eyed3
