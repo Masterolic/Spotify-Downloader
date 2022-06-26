@@ -140,7 +140,7 @@ def download_songs(song, download_directory='.'):
         "geo_bypass": True,
 
         "nocheckcertificate": True,
-        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '848'}],
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '320'}],
     }
 
     with YoutubeDL(ydl_opts) as ydl:
