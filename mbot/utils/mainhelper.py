@@ -133,7 +133,7 @@ def download_songs(song, download_directory='.'):
         'default_search': 'ytsearch',
         'noplaylist': True,
         "nocheckcertificate": True,
-        "outtmpl": f"{download_directory}/%(title)s.flac",
+        "outtmpl": f"{download_directory}/%(title)s.mp3",
         "quiet": True,
         "addmetadata": True,
         "prefer_ffmpeg": True,
