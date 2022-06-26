@@ -21,7 +21,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from asyncio import sleep
-from mbot.utils.progress import progress
 from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP
 from pyrogram import filters
 from mbot.utils.mainhelper import parse_spotify_url,fetch_spotify_track,download_songs,thumb_down,copy,forward 
