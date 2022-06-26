@@ -77,7 +77,7 @@ async def spotify_dl(_,message):
             audiofile.tag.artist = song.get('artist')
             audiofile.tag.album = song.get('album')
             audiofile.tag.album_artist = song.get('genre')
-            audiofile.tag.title = song.get('artist')
+            audiofile.tag.title = song.get('name)
             audiofile.tag.track_num = 1
             audiofile.tag.save()
             AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail, parse_mode="markdown",quote=True)
@@ -104,7 +104,7 @@ async def spotify_dl(_,message):
                 audiofile.tag.artist = song.get('artist')
                 audiofile.tag.album = song.get('album')
                 audiofile.tag.album_artist = song.get('genre')
-                audiofile.tag.title = song.get('artist')
+                audiofile.tag.title = song.get('name')
                 audiofile.tag.track_num = 1
                 audiofile.tag.save()
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode="markdown",quote=True)
@@ -128,7 +128,7 @@ async def spotify_dl(_,message):
                 audiofile.tag.artist = song.get('artist')
                 audiofile.tag.album = song.get('album')
                 audiofile.tag.album_artist = song.get('genre')
-                audiofile.tag.title = song.get('artist')
+                audiofile.tag.title = song.get('name')
                 audiofile.tag.track_num = 1
                 audiofile.tag.save()
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode="markdown",quote=True)
