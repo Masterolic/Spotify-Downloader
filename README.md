@@ -44,9 +44,8 @@ Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/bl
 *Step 3* ⚙️ `python3 -m mbot`
 
 
-#CONTACT OWNER 
+## CONTACT OWNER 
 
-You can reach me here 👇
 <h3 align="center">𝘾𝙊𝙉𝙏𝘼𝘾𝙏 𝙈𝙀 𝙃𝙀𝙍𝙀<img align="center" src="https://github.com/PANDITHAN/PANDITHAN/blob/main/assets/Handshake.gif" height="33px" /></h3>
 <p align="center">
 <a href="https://t.me/Masterolic"><img alt="Telegram" src="https://img.shields.io/badge/ME-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/></a>
