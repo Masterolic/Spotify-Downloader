@@ -46,4 +46,4 @@ Add your variables in [config.env](https://github.com/Masterolic/Spotify-repo/bl
 
 # CONTACT OWNER 
 
-You can reach me here https://t.me/masterolic
+You can reach me here 👇
