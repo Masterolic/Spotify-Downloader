@@ -11,3 +11,4 @@ youtube-dl
 python-arq
 aiohttp
 eyed3
+lyricsgenius
