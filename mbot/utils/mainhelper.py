@@ -23,10 +23,9 @@ SOFTWARE.
 from random import randint 
 #from youtube_dl import YoutubeDL
 from yt_dlp import YoutubeDL
-from mbot import LOGGER,LOG_GROUP
+from mbot import LOGGER,LOG_GROUP,BUG
 from requests import get
 from asgiref.sync import sync_to_async
-BUG = "" #put your log error I'd here :)
 @sync_to_async
 def parse_deezer_url(url):
     url = get(url).url
