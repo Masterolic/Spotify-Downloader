@@ -52,7 +52,7 @@ SUDO_USERS = environ.get("SUDO_USERS",str(OWNER_ID)).split()
 SUDO_USERS = [int(_x) for _x in SUDO_USERS]
 if OWNER_ID not in SUDO_USERS:
     SUDO_USERS.append(OWNER_ID)
-AUTH_CHATS = environ.get('AUTH_CHATS','-1001576243355').split()
+AUTH_CHATS = environ.get('AUTH_CHATS',None ).split()
 AUTH_CHATS = [int(_x) for _x in AUTH_CHATS]
 LOG_GROUP = environ.get("LOG_GROUP", None)
 if LOG_GROUP:
@@ -65,12 +65,14 @@ if BUG:
 try:
     ARQ_API_KEY = environ['ARQ_API_KEY']
     ARQ_API_URL = "https://arq.hamker.in"
+    aiohttpsession = ClientSession()
+    arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+
 except Exception as e:
     pass
     print(f"python arq key is not a valid string skiping it ...! Reason:{e}")
-aiohttpsession = ClientSession()
-arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
-
+    aiohttpsession = ClientSession()
+    arq = None
     
 class Mbot(Client):
     def  __init__(self):
