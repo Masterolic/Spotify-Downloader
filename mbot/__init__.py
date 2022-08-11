@@ -43,6 +43,7 @@ try:
     API_ID = int(environ['API_ID'])
     API_HASH = environ['API_HASH']
     BOT_TOKEN = environ['BOT_TOKEN']
+    BUG = int(environ['BUG'])
     OWNER_ID = int(environ['OWNER_ID'])
 except KeyError:
     LOGGER.debug("One or More ENV variable not found.")
@@ -58,7 +59,7 @@ LOG_GROUP = environ.get("LOG_GROUP", None)
 if LOG_GROUP:
     LOG_GROUP = int(LOG_GROUP)
   # Get It From @ARQRobot
-ARQ_API_KEY = ""
+ARQ_API_KEY = environ['ARQ_API_KEY']
 ARQ_API_URL = "https://arq.hamker.in"
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
