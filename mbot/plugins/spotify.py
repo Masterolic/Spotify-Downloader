@@ -187,7 +187,8 @@ async def spotify_dl(_,message):
         H = await message.reply_text(f"Done✅",   
              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Error Detected", callback_data="bug")]]))
         await message.reply_text(f"you can also get it from Saavn type /saavn music_name")
-        await forward(K,H)
+        if BUG:
+           await forward(K,H)
 
 @Mbot.on_callback_query(filters.regex(r"feed"))
 async def feedback(_,query):
