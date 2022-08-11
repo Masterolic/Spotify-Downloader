@@ -43,7 +43,6 @@ try:
     API_ID = int(environ['API_ID'])
     API_HASH = environ['API_HASH']
     BOT_TOKEN = environ['BOT_TOKEN']
-    BUG = int(environ['BUG'])
     OWNER_ID = int(environ['OWNER_ID'])
 except KeyError:
     LOGGER.debug("One or More ENV variable not found.")
@@ -58,6 +57,10 @@ AUTH_CHATS = [int(_x) for _x in AUTH_CHATS]
 LOG_GROUP = environ.get("LOG_GROUP", None)
 if LOG_GROUP:
     LOG_GROUP = int(LOG_GROUP)
+BUG = environ.get("BUG", None)
+if BUG:
+    BUG = int(BUG)
+
   # Get It From @ARQRobot
 try:
     ARQ_API_KEY = environ['ARQ_API_KEY']
