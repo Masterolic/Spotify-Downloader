@@ -22,7 +22,7 @@ SOFTWARE.
 """
 from asyncio import sleep
 #from mbot.utils.progress import progress
-from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP
+from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP,BUG
 from pyrogram import filters
 from mbot.utils.mainhelper import parse_spotify_url,fetch_spotify_track,download_songs,thumb_down,copy,forward 
 from mbot.utils.ytdl import getIds,ytdl_down,audio_opt
@@ -38,7 +38,6 @@ from mutagen.flac import FLAC ,Picture
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 client = spotipy.Spotify(auth_manager=spotipy.oauth2.SpotifyClientCredentials())
 #PICS = ("mbot/1162775.jpg mbot/danny-howe-bn-D2bCvpik-unsplash.jpg mbot/saurabh-gill-38RthwbB3nE-unsplash.jpg").split()
-BUG = "" #put your log group id here for error logs 
 @Mbot.on_message(filters.regex(r'https?://open.spotify.com[^\s]+') & filters.incoming &  ~filters.edited | filters.regex(r'https?://open.spotify.com[^\s]+') & filters.command(["spotify","spotdl"]) | filters.incoming & ~filters.edited & filters.regex(r"spotify:") & filters.chat(AUTH_CHATS))
 async def spotify_dl(_,message):
     link = message.matches[0].group(0)
