@@ -9,7 +9,7 @@ WORKDIR /app
 # Copy the requirements.txt file into working directory and install the packages
 COPY requirements.txt .
 RUN pip3 install -U -r requirements.txt
-
+RUN apt update && apt upgrade -y apt install ffmpeg -y 
 # Copy all the files into working directory
 COPY . .
 
