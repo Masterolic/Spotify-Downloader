@@ -8,6 +8,5 @@ deezer-python
 spotipy
 psutil
 youtube-dl
-python-arq
 aiohttp
 lyricsgenius
