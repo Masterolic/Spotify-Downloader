@@ -1,4 +1,4 @@
-##### this is removed in new update :) ######
+##### this code is removed from new update :) ######
 from mbot import Mbot , arq
 from pyrogram import filters 
 from requests import get
