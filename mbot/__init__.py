@@ -29,7 +29,7 @@ from Python_ARQ import ARQ
 from aiohttp import ClientSession
 from dotenv import load_dotenv
 load_dotenv("config.env")
-
+import os 
 # Log
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(message)s",
@@ -61,18 +61,18 @@ BUG = environ.get("BUG", None)
 if BUG:
     BUG = int(BUG)
 
-  # Get It From @ARQRobot
-try:
-    ARQ_API_KEY = environ['ARQ_API_KEY']
-    ARQ_API_URL = "https://arq.hamker.in"
-    aiohttpsession = ClientSession()
-    arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+  # this code is removed :)
+ #try:
+ #   ARQ_API_KEY = environ['ARQ_API_KEY']
+ #   ARQ_API_URL = "https://arq.hamker.in"
+ #   aiohttpsession = ClientSession()
+ #   arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-except Exception as e:
-    pass
-    print(f"python arq key is not a valid string skiping it ...! Reason:{e}")
-    aiohttpsession = ClientSession()
-    arq = None
+#except Exception as e:
+#    pass
+#    print(f"python arq key is not a valid string skiping it ...! Reason:{e}")
+#   aiohttpsession = ClientSession()
+#    arq = None
     
 class Mbot(Client):
     def  __init__(self):
@@ -87,6 +87,11 @@ class Mbot(Client):
             sleep_threshold=30
         )
     async def start(self):
+        if path.exists('./cache'):
+           os.system('rm -rf ./cache/')
+           mkdir('./cache/')
+        else:
+             mkdir('./cache/')
         global BOT_INFO
         await super().start()
         BOT_INFO = await self.get_me()
