@@ -43,7 +43,7 @@ async def spotify_dl(_,message):
     link = message.matches[0].group(0)
     #seep = await sleep (0.9)
     m = await message.reply_text(f"⏳")
-    n = await message.reply_chat_action("typing")
+    n = await message.reply_chat_action(enums.ChatAction.TYPING)
 
     try:
         parsed_item = await parse_spotify_url(link)
@@ -53,13 +53,13 @@ async def spotify_dl(_,message):
         if item_type in ["show", "episode"]:
             items = await getIds(link)
             for item in items:
-                cForChat = await message.reply_chat_action("record_audio")
+                # you can update this chat action #cForChat = await message.reply_chat_action("record_audio")
                 sleeeps = await sleep (0.9)
                 PForCopy = await message.reply_photo(item[5],caption=f"✔️ Episode Name : `{item[3]}`\n🕔 Duration : {item[4]//60}:{item[4]%60}")
                 fileLink = await ytdl_down(audio_opt(randomdir,item[2]),f"https://open.spotify.com/episode/{item[0]}")
                 thumbnail = await thumb_down(item[5],item[0])
                 sleeping  = await sleep(2.0)
-                DForChat =  await message.reply_chat_action("upload_audio")
+                DForChat =  await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
                 #reply = await message.reply_text(f"sorry we removed support of  episode 😔 pls send other types")
                 AForCopy = await message.reply_audio(fileLink,title=item[3].replace("_"," "),performer="Spotify",duration=int(item[4]),caption=f"[{item[3]}](https://open.spotify.com/episode/{item[0]})",thumb=thumbnail,parse_mode="markdown",quote=True)
                 shutil.rmtree(randomdir)
@@ -69,12 +69,12 @@ async def spotify_dl(_,message):
             return await m.delete()
         elif item_type == "track":
             song = await fetch_spotify_track(client,item_id)
-            cForChat = await message.reply_chat_action("record_audio")
+            # you can update to latest chat action #cForChat = await message.reply_chat_action("record_audio")
             #sleeeps = await sleep (0.9)
             PForCopy = await message.reply_photo(song.get('cover'),caption=f"🎧 Title : `{song['name']}`\n🎤 Artist : `{song['artist']}`\n💽 Album : `{song['album']}`\n🗓 Release Year: `{song['year']}`")
             path = await download_songs(song,randomdir)
             thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
-            dForChat = await message.reply_chat_action("upload_audio")
+            dForChat = await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
             audio = FLAC(path)
             audio["YEAR_OF_RELEASE"] = song.get('year')
             audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
@@ -108,12 +108,12 @@ async def spotify_dl(_,message):
             total_tracks = tracks.get('total')
             for track in tracks['items']:
                 song = await fetch_spotify_track(client,track.get('track').get('id'))
-                cForChat = await message.reply_chat_action("record_audio")
+                #you can update to latest chat action #cForChat = await message.reply_chat_action("record_audio")
                #sleeeps = await sleep (0.9)
                 PForCopy = await message.reply_photo(song.get('cover'),caption=f"🎧 Title : `{song['name']}`\n🎤 Artist : `{song['artist']}`\n💽 Album : `{song['album']}`\n🗓 Release Year: `{song['year']}`\n🔢 Track No: `{song['playlist_num']}`\n🔢 Total Track: `{total_tracks}`")
                 path = await download_songs(song,randomdir)
                 thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
-                cForChat = await message.reply_chat_action("upload_audio")
+                cForChat = await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
                 sleeping  = await sleep(0.8)
                 audio = FLAC(path)
                 audio["YEAR_OF_RELEASE"] = song.get('year')
