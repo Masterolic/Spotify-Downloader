@@ -23,7 +23,7 @@ SOFTWARE.
 from asyncio import sleep
 #from mbot.utils.progress import progress
 from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP,BUG
-from pyrogram import filters
+from pyrogram import filters,enums
 from mbot.utils.mainhelper import parse_spotify_url,fetch_spotify_track,download_songs,thumb_down,copy,forward 
 from mbot.utils.ytdl import getIds,ytdl_down,audio_opt
 import spotipy
