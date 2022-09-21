@@ -25,7 +25,7 @@ from pyrogram import Client
 from os import environ,sys,mkdir,path
 import logging
 from sys import executable
-from Python_ARQ import ARQ
+#from Python_ARQ import ARQ
 from aiohttp import ClientSession
 from dotenv import load_dotenv
 load_dotenv("config.env")
