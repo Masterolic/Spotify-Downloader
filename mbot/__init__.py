@@ -28,6 +28,7 @@ from sys import executable
 #from Python_ARQ import ARQ
 from aiohttp import ClientSession
 from dotenv import load_dotenv
+import shutil
 load_dotenv("config.env")
 import os 
 # Log
@@ -88,7 +89,7 @@ class Mbot(Client):
         )
     async def start(self):
         if path.exists('./cache'):
-           os.system('rm -rf ./cache/')
+           shutil.rmtree('./cache)')
            mkdir('./cache/')
         else:
              mkdir('./cache/')
