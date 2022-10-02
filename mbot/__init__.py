@@ -88,11 +88,8 @@ class Mbot(Client):
             sleep_threshold=30
         )
     async def start(self):
-        if path.exists('./cache'):
-           shutil.rmtree('./cache)')
-           mkdir('./cache/')
-        else:
-             mkdir('./cache/')
+        os.system(f"rm -rf ./cache/"
+        os.system(f"mkdir ./cache/"
         global BOT_INFO
         await super().start()
         BOT_INFO = await self.get_me()
