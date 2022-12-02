@@ -1,7 +1,7 @@
 Hey this is a official old  repo of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot)
 #Updated to latest pyrogram 
 # Hey welcome 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Welcome+to+Spotify+Downloa+bot)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Welcome+to+Spotify+Downloa+bot)](https://github.com/Masterolic/Spotify-Downloader)
 
 # Donate me 🍪
 Please donate me and support  Only  if you are Rich 🥺 🤑❤️ if you are poor don't worry me to same 🥺❤️
