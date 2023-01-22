@@ -1,4 +1,4 @@
-pyrogram>=2.0.40
+pyrogram==2.0.38
 tgcrypto
 yt-dlp
 python-dotenv
