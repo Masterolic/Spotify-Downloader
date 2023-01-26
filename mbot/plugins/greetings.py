@@ -64,7 +64,7 @@ async def send_log(_,message):
 @Mbot.on_message(filters.command("ping"))
 async def ping(client,message):
     start = datetime.now()
-    await client.send(Ping(ping_id=0))
+    await client.invoke(Ping(ping_id=0))
     ms = (datetime.now() - start).microseconds / 1000
     await message.reply_text(f"**Pong!**\nResponse time: `{ms} ms`")
 
