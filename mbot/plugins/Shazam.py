@@ -6,18 +6,18 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import Message , InlineKeyboardMarkup, InlineKeyboardButton ,CallbackQuery
 from pyrogram.errors import FloodWait 
 from asyncio import sleep
-from database.users_chats_db import db
-from utils import get_size
+#from database.users_chats_db import db
+#from utils import get_size
 from shazamio import Shazam
-import math
+#import math
 import asyncio
 import time
-import shlex
-import aiofiles
-import aiohttp
-import wget
+#import shlex
+#import aiofiles
+#import aiohttp
+#import wget
 import os
-from asgiref.sync import sync_to_async
+#from asgiref.sync import sync_to_async
 from requests import get
 from mbot.utils.util import run_cmd as runcmd
 import datetime
@@ -26,14 +26,14 @@ import requests
 #import ffmpeg 
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-from youtubesearchpython import VideosSearch
+#from youtubesearchpython import VideosSearch
 import yt_dlp
-from youtube_search import YoutubeSearch
+#from youtube_search import YoutubeSearch
 import requests
 from typing import Tuple
 from pyrogram import filters
 from pyrogram import Client
-from mbot import OWNER_ID as ADMINS
+#from mbot import OWNER_ID as ADMINS
 import time
 from apscheduler.schedulers.background import BackgroundScheduler
 from mbot.utils.shazam import humanbytes, edit_or_reply, fetch_audio
@@ -46,7 +46,7 @@ def get_arg(message):
     if " ".join(split[1:]).strip() == "":
         return ""
     return " ".join(split[1:])
-@sync_to_async
+#@sync_to_async
 def thumb_down(album_id,img):
     with open(f"/tmp/thumbnails/{album_id}.jpg","wb") as file:
         file.write(get(img).content)
