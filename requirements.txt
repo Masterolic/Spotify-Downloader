@@ -1,6 +1,7 @@
 pyrogram==2.0.38
 tgcrypto
 yt-dlp
+shazamio 
 python-dotenv
 requests
 asgiref
