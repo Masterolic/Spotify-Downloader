@@ -5,6 +5,7 @@ shazamio
 python-dotenv
 requests
 asgiref
+wget
 deezer-python
 spotipy
 psutil
