@@ -22,9 +22,17 @@ The answer simple I Don't own this repo this is edited version of [@NeedMusicRob
 # IS THIS SOURCE CODE IS USED FOR [@Spotify_downloa_bot](https://t.me/Spotify_downloa_bot)
 NO, This [bot](https://github.com/rozari0/NeedMusicRobot) was the insperation to build our bot ,you can see our bot is entirely different From it some of the features will be implementing to this repoiostry 
 # EASY WAY TO  DEPLOY IN  LOCAL/VPS ?
+         cd Spotify-Downloader/
 ```      pip3 install -r requirements.txt 
          python3 -m mbot 
 ```
+
+# DOCKER
+```
+  docker build . -t musicbot
+  docker run musicbot  
+```
+
 `API_ID`  
 `API_HASH`api Id and hash get it from  [Telegram](https://my.telegram.org)
 `BOT_TOKEN`get it from [@BotFather](https://t.me/BotFather)
