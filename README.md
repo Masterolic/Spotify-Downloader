@@ -60,6 +60,4 @@ python3 -m mbot
 #### IF you need any help or need to add any features or tell feedback , don't hesitate to contact me 
 
 <h3 src="https://github.com/PANDITHAN/PANDITHAN/blob/main/assets/Handshake.gif" height="33px" /></h3>
-<p align="center">
-#<a href="https://t.me/Masterolic"><img alt="Telegram" src="https://img.shields.io/badge/CONTACT ME-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/></a>
 </p>
