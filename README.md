@@ -22,10 +22,16 @@ The answer simple I Don't own this repo this is edited version of [@NeedMusicRob
 # IS THIS SOURCE CODE IS USED FOR [@Spotify_downloa_bot](https://t.me/Spotify_downloa_bot)
 NO, This [bot](https://github.com/rozari0/NeedMusicRobot) was the insperation to build our bot ,you can see our bot is entirely different From it some of the features will be implementing to this repoiostry 
 # EASY WAY TO  DEPLOY IN  LOCAL/VPS ?
-```  
-         cd Spotify-Downloader/
-         pip3 install -r requirements.txt 
-         python3 -m mbot 
+add variables in [config.env](https://github.com/Masterolic/Spotify-Downloader/blob/Latest/config.env)
+
+
+```
+apt update && apt upgrade -y 
+apt install git ffmpeg python3 python3-pip -y
+git clone https://github.com/Masterolic/Spotify-Downloader.git 
+cd Spotify-Downloader/
+pip3 install -r requirements.txt 
+python3 -m mbot 
 ```
 
 # DOCKER
