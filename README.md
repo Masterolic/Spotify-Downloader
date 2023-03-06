@@ -1,8 +1,8 @@
 [DEMO VERSION](https://t.me/Spotify_downloa_bot)
 
-#NOTE
-This  is  old  repository of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot) so, this maybe buggy and lack of many features than our bot ,but still this will be maintained and updated some features when we do new updates
-#USED LANGUAGE AND METHOD
+# NOTE
+This  Is  Old  repository of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot) so, this maybe buggy and lack of many features than our bot ,but still this will be maintained and updated some features when we do new updates
+# USED LANGUAGE AND METHOD
 This bot is  created using python mtproto pyrogram telegram library 
 
 # Donate me 🍪
