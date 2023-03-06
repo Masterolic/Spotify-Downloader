@@ -40,7 +40,8 @@ python3 -m mbot
   docker run musicbot  
 ```
 ### ENVIRONMENT VARIABLES
-you need to add these variable in [config.env](https://github.com/Masterolic/Spotify-Downloader/blob/Latest/config.env) to run this  Telegram Spotify bot 
+#### you need to add these variable in [config.env](https://github.com/Masterolic/Spotify-Downloader/blob/Latest/config.env)
+
 `API_ID and API_HASH` get through [Telegram](https://my.telegram.org)
 
 `BOT_TOKEN`get through [@BotFather](https://t.me/BotFather)
