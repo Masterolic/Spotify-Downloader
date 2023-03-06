@@ -48,11 +48,18 @@ python3 -m mbot
 
 `SPOTIPY_CLIENT_ID and SPOTIPY_CLIENT_SECRET`get through [Spotify](https://developers.spotify.com)
 
-`LOG_GROUP and AUTH_CHATS` Get IDs add a group management bot and type /id
+### OPTIONAL ENVIRONMENT VARIABLES 
+
+`LOG_GROUP`Telegram chat id of your log group to dump files
+
+`BUG` Telegram chat Id to dump errors or bugs 
+
+`AUTH_CHATS` Telegram chat id to ristrict other chats from using your bot
 
 ### CONTACT OWNER 
+#### IF you need any help or need to add any features or tell feedback , don't hesitate to contact me 
 
-<h3 align="center">𝘾𝙊𝙉𝙏𝘼𝘾𝙏 𝙈𝙀 𝙃𝙀𝙍𝙀<img align="center" src="https://github.com/PANDITHAN/PANDITHAN/blob/main/assets/Handshake.gif" height="33px" /></h3>
+<h3 src="https://github.com/PANDITHAN/PANDITHAN/blob/main/assets/Handshake.gif" height="33px" /></h3>
 <p align="center">
-<a href="https://t.me/Masterolic"><img alt="Telegram" src="https://img.shields.io/badge/CONTACT ME-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/></a>
+#<a href="https://t.me/Masterolic"><img alt="Telegram" src="https://img.shields.io/badge/CONTACT ME-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/></a>
 </p>
