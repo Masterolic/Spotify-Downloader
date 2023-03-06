@@ -1,30 +1,29 @@
-[DEMO VERSION](https://t.me/Spotify_downloa_bot)
-
+[DEMO VERSION  @Spotify_downloa_bot ](https://t.me/Spotify_downloa_bot)
+# IS THIS STILL MAINTAINING?
+Yes ,this repository is still maintained and will be adding new feature's also
 # NOTE
 This  Is  Old  repository of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot) so, this maybe buggy and lack of many features than our bot ,but still this will be maintained and updated some features when we do new updates
-# USED LANGUAGE AND METHOD
-This bot is  created using python mtproto pyrogram telegram library 
+# WHICH  LANGUAGE AND TELEGRAM API  USED IN THIS ?
+This bot is  created using python language and python  mtproto pyrogram telegram library 
 
-# Donate me 🍪
-Please buy me a piza by using bellow link ❣️
+# DONATE ME PLEASE ❣️
+Please buy me a piza by using bellow link 👇👇👇
 [Buy Me A Piza](https://www.buymeacoffee.com/Masterolic)
 
-# RATE Our bot 
+# RATE OUR BOT 
 Rate our  bot [FEEDBACK](https://t.me/dailychannelsbot?start=spotify_downloa_bot)
 
 # ABOUT
-A Simple Music Downloader Bot For Telegram Spotify Support
-# why I made this repo open ?
-The answer simple I Don't own this repo because my bot is a clone of [@NeedMusicRobot](https://t.me/NeedMusicRobot) and my bot
-is entirely different from this in this source was our first update to Spotify support !
-# Past about Bot and Owner 😂
-I made this bot in support as a inline mode with 10k files we was having under 10 user then I connected livegram and sended music 😂😂😂 then I used another repo That time I don't know programing then I got some users then a thirll I founded this repo I used this I got lot of message from heaters that my bot only support 128 bit quality we was having under 80 - 100 users then I started learning programing now I have more than 18k users and Daily about 1k new users 😂💞🥳⛏️⚙️
-# Is this edited ? 
+A Simple Open Source  Spotify Downloader Bot For Telegram 
 
-Yes this support flac [real repo](https://github.com/rozari0/NeedMusicRobot) support 128 you can use any you want :) [320 click here](https://github.com/Masterolic/Spotify-Downloader/tree/320)
+# WHY I MADE THIS OPEN SOURCE  ?
+The answer simple I Don't own this repo this is edited version of [@NeedMusicRobot](https://t.me/NeedMusicRobot)
 
-# Variables
-
+# IS THIS SOURCE CODE IS USED FOR [@Spotify_downloa_bot](https://t.me/Spotify_downloa_bot)
+NO, This [bot](https://github.com/rozari0/NeedMusicRobot) was the insperation to build our bot ,you can see our bot is entirely different From it some of the features will be implementing to this repoiostry 
+# EASY WAY TO  DEPLOY IN  LOCAL/VPS ?
+``` pip3 install -r requirements.txt 
+python3 -m mbot ```
 `API_ID`  
 `API_HASH`api Id and hash get it from  [Telegram](https://my.telegram.org)
 `BOT_TOKEN`get it from [@BotFather](https://t.me/BotFather)
