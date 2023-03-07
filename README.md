@@ -58,6 +58,8 @@ python3 -m mbot
 
 `AUTH_CHATS` Telegram chat id to ristrict other chats from using your bot
 
+`genius_api` Get it from https://genius.com/developers
+
 ### CAN I CONTACT OWNER ?
  >  IF you need any help or need to add any features or tell feedback , don't hesitate to contact me 
 
