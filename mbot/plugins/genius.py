@@ -4,13 +4,13 @@ from mbot import Mbot,genius_api
 import requests 
 from lyricsgenius import Genius 
 import os
-genius = Genius(genius_api)
 
 
 API = "https://apis.xditya.me/lyrics?song="
 
 @Mbot.on_message(filters.text & filters.command(["genius"]) & filters.private)
-async def sng(bot, message):          
+async def sng(bot, message):  
+          genius = Genius(genius_api)        
           mee = await message.reply_text("`Searching`")
           try:
               song = message.text.split(None, 1)[1] #.lower().strip().replace(" ", "%20")
