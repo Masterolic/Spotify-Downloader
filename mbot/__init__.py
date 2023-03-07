@@ -61,7 +61,9 @@ if LOG_GROUP:
 BUG = environ.get("BUG", None)
 if BUG:
     BUG = int(BUG)
-
+genius_api = environ["genius_api",None)
+if genius_api:
+    genius_api = genius_api
   # this code is removed :)
  #try:
  #   ARQ_API_KEY = environ['ARQ_API_KEY']
