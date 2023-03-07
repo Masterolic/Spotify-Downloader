@@ -1,42 +1,50 @@
-"""MIT License
-
-Copyright (c) 2022 Daniel
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
+from pyrogram.errors import FloodWait,Forbidden,UserIsBlocked,MessageNotModified,ChatWriteForbidden
+from requests.exceptions import MissingSchema
 from asyncio import sleep
 #from mbot.utils.progress import progress
-from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP,BUG
+import time
+from mutagen.id3 import ID3, APIC,error
+from mutagen.easyid3 import EasyID3
+from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP,BUG,users,PREM
 from pyrogram import filters,enums
 from mbot.utils.mainhelper import parse_spotify_url,fetch_spotify_track,download_songs,thumb_down,copy,forward 
 from mbot.utils.ytdl import getIds,ytdl_down,audio_opt
-import spotipy
+from spotipy import Spotify
+from spotipy.oauth2 import SpotifyClientCredentials
+#import psutil
 from os import mkdir
-import os
+from os import environ
 import shutil
+from shutil import rmtree
+from Script import script
 from random import randint
-import random
+#import random
 #import eyed3 
-from mutagen import File
-from mutagen.flac import FLAC ,Picture
+from mutagen.easyid3 import EasyID3
+#import eyed3
+from lyricsgenius import Genius 
+from pyrogram.types import Message
+from pyrogram.errors.rpc_error import RPCError
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-client = spotipy.Spotify(auth_manager=spotipy.oauth2.SpotifyClientCredentials())
+from pyrogram import Client, filters
+#import psutil
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
+#from info import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, MELCOW_NEW_USERS
+from database.users_chats_db import db
+#from database.ia_filterdb import Media
+from utils import temp
+#from Script import script
+from pyrogram.errors import ChatAdminRequired
+from mbot import BUG,Mbot
+from mutagen.mp3 import MP3
+from requests.exceptions import MissingSchema
+client = Spotify(auth_manager=SpotifyClientCredentials())
+PICS = ("mbot/1162775.jpg mbot/danny-howe-bn-D2bCvpik-unsplash.jpg mbot/saurabh-gill-38RthwbB3nE-unsplash.jpg").split()
+LOG_TEXT_P = """
+ID - <code>{}</code>
+Name - {}
+"""
 #PICS = ("mbot/1162775.jpg mbot/danny-howe-bn-D2bCvpik-unsplash.jpg mbot/saurabh-gill-38RthwbB3nE-unsplash.jpg").split()
 @Mbot.on_message(filters.regex(r'https?://open.spotify.com[^\s]+') & filters.incoming | filters.regex(r'https?://open.spotify.com[^\s]+') & filters.command(["spotify","spotdl"]) | filters.incoming & filters.regex(r"spotify:") & filters.chat(AUTH_CHATS))
 async def spotify_dl(_,message):
@@ -75,30 +83,27 @@ async def spotify_dl(_,message):
             path = await download_songs(song,randomdir)
             thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
             dForChat = await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
-            audio = FLAC(path)
-            audio["YEAR_OF_RELEASE"] = song.get('year')
-            audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
-            audio["GEEK_SCORE"] = "9"
-            audio["ARTIST"] = song.get('artist')                                                                            
-            audio["ALBUM"] = song.get('album')
+            audio = EasyID3(path)
+            try:
+                audio["TITLE"] = f" {song.get('name')}"
+                audio["originaldate"] = song.get('year')
+              #  audio["YEAR_OF_RELEASE"] = song.get('year')
+                audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
+            #    audio["GEEK_SCORE"] = "9"
+                audio["ARTIST"] = song.get('artist')                                                                            
+                audio["ALBUM"] = song.get('album')
+                audio["DATE"] = song.get('year')
+                audio.save()
+                try:
+                   audio = MP3(path, ID3=ID3)
+                   audio.tags.add(APIC(mime='image/jpeg',type=3,desc=u'Cover',data=open(thumbnail,'rb').read()))
+                   audio.save()
+                except Exception :
+                    pass   
+            except:
+                pass
             audio.save()
-            audi = File(path)
-            image = Picture()
-            image.type = 3
-            if thumbnail.endswith('png'):
-               mime = 'image/png'
-            else:
-                 mime = 'image/jpeg'
-            image.desc = 'front cover'
-            with open(thumbnail, 'rb') as f: # better than open(albumart, 'rb').read() ?
-                  image.data = f.read()
-
-            audi.add_picture(image)
-            audi.save()
-            AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,quote=True)
-            feedback = await message.reply_text(f"Done✅",   
-             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-            shutil.rmtree(randomdir)
+            AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}­",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail, parse_mode=enums.ParseMode.MARKDOWN,quote=True)
             if LOG_GROUP:
                 await sleep(2.5)
                 await copy(PForCopy,AForCopy)
@@ -115,30 +120,28 @@ async def spotify_dl(_,message):
                 thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
                 cForChat = await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
                 sleeping  = await sleep(0.8)
-                audio = FLAC(path)
-                audio["YEAR_OF_RELEASE"] = song.get('year')
-                audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
-                audio["GEEK_SCORE"] = "9"
-                audio["ARTIST"] = song.get('artist')                                                                           
-                audio["ALBUM"] = song.get('album')
+                audio = EasyID3(path)
+                try:
+                    audio["TITLE"] = f" {song.get('name')} "
+                    audio["originaldate"] = song.get('year')
+                #    audio["YEAR_OF_RELEASE"] = song.get('year')
+                    audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
+              #      audio["GEEK_SCORE"] = "9"
+                    audio["ARTIST"] = song.get('artist')                                                                           
+                    audio["ALBUM"] = song.get('album')
+                    audio["DATE"] = song.get('year')
+                except:
+                     pass
                 audio.save()
-                audi = File(path)
-                image = Picture()
-                image.type = 3
-                if thumbnail.endswith('png'):
-                    mime = 'image/png'
-                else:
-                    mime = 'image/jpeg'
-                image.desc = 'front cover'
-                with open(thumbnail, 'rb') as f: # better than open(albumart, 'rb').read() ?
-                   image.data = f.read()
-
-                audi.add_picture(image)
-                audi.save()
+                try:
+                   audio = MP3(path, ID3=ID3)
+                   audio.tags.add(APIC(mime='image/jpeg',type=3,desc=u'Cover',data=open(thumbnail,'rb').read()))
+                except Exception as e:
+                    pass
+                audio.save()
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,quote=True)
                 feedback = await message.reply_text(f"Done✅",   
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-                shutil.rmtree(randomdir)
                 if LOG_GROUP:
                     await sleep(2.5)
                     await copy(PForCopy,AForCopy)
@@ -152,30 +155,29 @@ async def spotify_dl(_,message):
                 path = await download_songs(song,randomdir)
                 thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
                 sleeping  = await sleep(0.8)
-                audio = FLAC(path)
-                audio["YEAR_OF_RELEASE"] = song.get('year')
-                audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
-                audio["GEEK_SCORE"] = "9"
-                audio["ARTIST"] = song.get('artist')                                                                         
-                audio["ALBUM"] = song.get('album')
+                audio = EasyID3(path)
+                try:
+                    audio["TITLE"] = f" {song.get('name')} "
+                    audio["originaldate"] = song.get('year')
+            #        audio["YEAR_OF_RELEASE"] = song.get('year')
+                    audio["WEBSITE"] = "https://t.me/Spotify_downloa_bot"
+              #      audio["GEEK_SCORE"] = "9"
+                    audio["ARTIST"] = song.get('artist')                                                                         
+                    audio["ALBUM"] = song.get('album')
+                    audio["DATE"] = song.get('year')
+                except:
+                    pass
                 audio.save()
-                audi = File(path)
-                image = Picture()
-                image.type = 3
-                if thumbnail.endswith('png'):
-                   mime = 'image/png'
-                else:
-                    mime = 'image/jpeg'
-                image.desc = 'front cover'
-                with open(thumbnail, 'rb') as f: # better than open(albumart, 'rb').read() ?
-                   image.data = f.read()
-
-                audi.add_picture(image)
-                audi.save()
+                try:
+                   audio = MP3(path, ID3=ID3)
+                   audio.tags.add(APIC(mime='image/jpeg',type=3,desc=u'Cover',data=open(thumbnail,'rb').read()))
+                except Exception as e:
+                   pass
+                   print(e)
+                audio.save()
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,quote=True)
                 feedback = await message.reply_text(f"Done✅",   
                   reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-                shutil.rmtree(randomdir)
                 if LOG_GROUP:
                     await sleep(2.5)
                     await copy(PForCopy,AForCopy)
@@ -189,7 +191,17 @@ async def spotify_dl(_,message):
         await message.reply_text(f"you can also get it from Saavn type /saavn music_name")
         if BUG:
            await forward(K,H)
-
+    finally:
+        await sleep(2.0)
+        try:
+            rmtree(randomdir)
+        except:
+            pass
+        try:
+            await message.reply_text(f"Done✅",   
+         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
+            await message.reply_text(f"Check out @spotify_downloa_bot(music)  @spotifynewss(News)")
+            await m.delete()
 @Mbot.on_callback_query(filters.regex(r"feed"))
 async def feedback(_,query):
       await query.message.edit(f"Feedback 🏴‍☠️",
