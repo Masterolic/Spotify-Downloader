@@ -29,7 +29,7 @@ from mbot.utils.ytdl import getIds,ytdl_down,audio_opt
 import spotipy
 from os import mkdir
 import os
-import shutil
+from shutil import rmtree
 from random import randint
 import random
 #import eyed3 
@@ -62,7 +62,6 @@ async def spotify_dl(_,message):
                 DForChat =  await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
                 #reply = await message.reply_text(f"sorry we removed support of  episode 😔 pls send other types")
                 AForCopy = await message.reply_audio(fileLink,title=item[3].replace("_"," "),performer="Spotify",duration=int(item[4]),caption=f"[{item[3]}](https://open.spotify.com/episode/{item[0]})",thumb=thumbnail,quote=True)
-                shutil.rmtree(randomdir)
                 if LOG_GROUP:
                     await sleep(3.5)
                     await copy(PForCopy,AForCopy)
@@ -98,7 +97,6 @@ async def spotify_dl(_,message):
             AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,quote=True)
             feedback = await message.reply_text(f"Done✅",   
              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-            shutil.rmtree(randomdir)
             if LOG_GROUP:
                 await sleep(2.5)
                 await copy(PForCopy,AForCopy)
@@ -138,7 +136,6 @@ async def spotify_dl(_,message):
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,quote=True)
                 feedback = await message.reply_text(f"Done✅",   
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-                shutil.rmtree(randomdir)
                 if LOG_GROUP:
                     await sleep(2.5)
                     await copy(PForCopy,AForCopy)
@@ -175,7 +172,6 @@ async def spotify_dl(_,message):
                 AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,quote=True)
                 feedback = await message.reply_text(f"Done✅",   
                   reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-                shutil.rmtree(randomdir)
                 if LOG_GROUP:
                     await sleep(2.5)
                     await copy(PForCopy,AForCopy)
@@ -189,6 +185,16 @@ async def spotify_dl(_,message):
         await message.reply_text(f"you can also get it from Saavn type /saavn music_name")
         if BUG:
            await forward(K,H)
+    finally:
+        await sleep(2.0)
+        try:
+            rmtree(randomdir)
+        except:
+            pass
+        try:
+            await message.reply_text(f"Done✅",   
+         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
+            await message.reply_text(f"Check out @spotify_downloa_bot(music)  @spotifynewss(News)")    
 
 @Mbot.on_callback_query(filters.regex(r"feed"))
 async def feedback(_,query):
