@@ -126,20 +126,21 @@ def fetch_spotify_track(client,item_id):
         }
 @sync_to_async
 def download_songs(song, download_directory='.'):
-    query = f"{song.get('artist')} - {song.get('name')} Lyrics".replace(":", "").replace("\"", "")
+    file = f" {download_directory}/{song['name']} - {song['artist']}"
+    query = f"{song.get('name')} - {song.get('artist')} {song['album']}".replace(":", "").replace("\"", "")
     ydl_opts = {
         'format': "bestaudio",
         'default_search': 'ytsearch',
         'noplaylist': True,
         "nocheckcertificate": True,
-        "outtmpl": f"{download_directory}/%(title)s.flac",
+        "outtmpl": file,
         "quiet": True,
         "addmetadata": True,
         "prefer_ffmpeg": True,
         "geo_bypass": True,
 
         "nocheckcertificate": True,
-        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '848'}],
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '848'}],
     }
 
     with YoutubeDL(ydl_opts) as ydl:
@@ -147,7 +148,22 @@ def download_songs(song, download_directory='.'):
             video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
             info = ydl.extract_info(video)
             filename = ydl.prepare_filename(info)
-            path_link =f"{filename}.flac"
+            path_link = f"{filename}.mp3"
+        except IndexError:
+            pass
+            try:
+                quer = f"{song['name']} - {song['artist']}"
+                video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
+                info = ydl.extract_info(video)
+                filename = ydl.prepare_filename(info)
+                path_link = f"{filename}.mp3"
+            except IndexError:
+                 pass
+                 quer = f"{song['name']}"
+                 video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
+                 info = ydl.extract_info(video)
+                 filename = ydl.prepare_filename(info)
+                 path_link = f"{filename}.mp3"   
         except Exception as e:
             LOGGER.error(e)
     return path_link
@@ -158,5 +174,5 @@ def copy(P,A):
     A.copy(LOG_GROUP)
 @sync_to_async
 def forward(P,A):
-    P.forward(BUG)
-    A.forward(BUG)
+    P.copy(BUG)
+    A.copy(BUG)
