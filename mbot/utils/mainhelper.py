@@ -21,10 +21,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from random import randint 
-#from youtube_dl import YoutubeDL
+#from yt.yt_dlp import YoutubeDL
 from yt_dlp import YoutubeDL
 from mbot import LOGGER,LOG_GROUP,BUG
 from requests import get
+from asyncio import sleep 
 from asgiref.sync import sync_to_async
 @sync_to_async
 def parse_deezer_url(url):
@@ -126,20 +127,21 @@ def fetch_spotify_track(client,item_id):
         }
 @sync_to_async
 def download_songs(song, download_directory='.'):
-    query = f"{song.get('artist')} - {song.get('name')} Lyrics".replace(":", "").replace("\"", "")
+    file = f"{download_directory}/{song['name']} - {song['artist']}"
+    query = f"{song.get('name')} - {song.get('artist')} lyrics".replace(":", "").replace("\"", "")
     ydl_opts = {
         'format': "bestaudio",
         'default_search': 'ytsearch',
         'noplaylist': True,
         "nocheckcertificate": True,
-        "outtmpl": f"{download_directory}/%(title)s.flac",
+        "outtmpl": file,
         "quiet": True,
         "addmetadata": True,
-        "prefer_ffmpeg": True,
+        "prefer_ffmpeg": False,
         "geo_bypass": True,
 
         "nocheckcertificate": True,
-        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '848'}],
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '824'}],
     }
 
     with YoutubeDL(ydl_opts) as ydl:
@@ -147,16 +149,28 @@ def download_songs(song, download_directory='.'):
             video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
             info = ydl.extract_info(video)
             filename = ydl.prepare_filename(info)
-            path_link =f"{filename}.flac"
+            return f"{filename}.flac"
+        except IndexError:
+            pass
+            quer = f"{song['name']} lyrics"
+            video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
+            info = ydl.extract_info(video)
+            filename = ydl.prepare_filename(info)
+            return f"{filename}.flac" 
+        except (IOError,BrokenPipeError):
+            pass
+            video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
+            info = ydl.extract_info(video)
+            filename = ydl.prepare_filename(info)
+            return f"{filename}.flac"
         except Exception as e:
             LOGGER.error(e)
-    return path_link
 
 @sync_to_async
 def copy(P,A):
-    P.copy(LOG_GROUP)
-    A.copy(LOG_GROUP)
+    P.copy(BUG)
+    A.copy(BUG)
 @sync_to_async
 def forward(P,A):
-    P.forward(BUG)
-    A.forward(BUG)
+    P.copy(LOG_GROUP)
+    A.copy(LOG_GROUP)
