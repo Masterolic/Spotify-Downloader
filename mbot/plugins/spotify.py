@@ -191,10 +191,9 @@ async def spotify_dl(_,message):
             rmtree(randomdir)
         except:
             pass
-        try:
-            await message.reply_text(f"Done✅",   
+        await message.reply_text(f"Done✅",   
          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
-            await message.reply_text(f"Check out @spotify_downloa_bot(music)  @spotifynewss(News)")    
+        await message.reply_text(f"Check out @spotify_downloa_bot(music)  @spotifynewss(News)")    
 
 @Mbot.on_callback_query(filters.regex(r"feed"))
 async def feedback(_,query):
