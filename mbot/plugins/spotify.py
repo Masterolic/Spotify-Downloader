@@ -5,7 +5,7 @@ from asyncio import sleep
 import time
 from mutagen.id3 import ID3, APIC,error
 from mutagen.easyid3 import EasyID3
-from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP,BUG,users,PREM
+from mbot import AUTH_CHATS, LOGGER, Mbot,LOG_GROUP,BUG
 from pyrogram import filters,enums
 from mbot.utils.mainhelper import parse_spotify_url,fetch_spotify_track,download_songs,thumb_down,copy,forward 
 from mbot.utils.ytdl import getIds,ytdl_down,audio_opt
@@ -16,7 +16,7 @@ from os import mkdir
 from os import environ
 import shutil
 from shutil import rmtree
-from Script import script
+#from Script import script
 from random import randint
 #import random
 #import eyed3 
@@ -31,7 +31,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
 #from info import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, MELCOW_NEW_USERS
-from database.users_chats_db import db
+#from database.users_chats_db import db
 #from database.ia_filterdb import Media
 from utils import temp
 #from Script import script
