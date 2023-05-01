@@ -20,7 +20,7 @@ from pyrogram.types import CallbackQuery, Message
 #from database.users_chats_db import db
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 from pyrogram.raw.functions import Ping
-from mbot import LOG_GROUP, OWNER_ID, SUDO_USERS, Mbot,AUTH_CHATS,PREM,BUG,LIM
+from mbot import LOG_GROUP, OWNER_ID, SUDO_USERS, Mbot,AUTH_CHATS,BUG
 from os import execvp,sys , execl,environ,mkdir
 from apscheduler.schedulers.background import BackgroundScheduler
 import shutil
@@ -58,7 +58,6 @@ NO_SPAM = [
    -1001690327681,
    -1001342321483,
 ]
-db = Database()
 genius = Genius("ChS_Qz9KzZi-g95xGpYOT6lZhg4Ky9ciZoFFGTY-hatB5Pk7HvPhir3SQInE90k7")
 
 #@ScreenShotBot.on_callback_query()
@@ -88,15 +87,6 @@ async def _(c, m):
     elif int(message.chat.id) in NO_SPAM:
           return
     u = message.from_user.id
-    if u in LIM:
-       if LIM[int(m.from_user.id)] >= 1:
-          pr =  await message.reply("Sorry,Another download is in progress, try again after completing or You need to Upgrade your account .send /upgrade")
-          return
-    if u not in LIM:
-       if u not in PREM:
-          LIM[int(m.from_user.id)] = 0
-    else:
-         LIM[int(m.from_user.id)] += 1
     K = await message.reply("⌛")
     query = m.text
     reply_markup=[]
@@ -115,33 +105,7 @@ async def _(c, m):
         await message.reply(f"No results found for your {query}")
         await K.delete()
     finally:
-         if message.from_user.id not in PREM:
-           LIM[int(m.from_user.id)] -= 1
-async def foo(c, m, cb=False):
-    if m.text == None:
-       return
-    chat_id = m.from_user.id
-    if int(time.time()) - c.CHAT_FLOOD[chat_id] < 1:
-        if cb:
-            try:
-                await m.answer()
-            except Exception:
-                pass
-        return
-
-    c.CHAT_FLOOD[chat_id] = int(time.time())
-
-    if not await db.is_user_exist(chat_id):
-        await db.add_user(chat_id)
-        await c.send_message(-1001683070543, f"New User {m.from_user.mention}.")
-
-    
-
-    last_used_on = await db.get_last_used_on(chat_id)
-    if last_used_on != datetime.date.today().isoformat():
-        await db.update_last_used_on(chat_id)
-
-    await m.continue_propagation()
+          await m.continue_propagation()
 
 @Mbot.on_callback_query(filters.regex(r"search"))
 async def search(Mbot: Mbot, query: CallbackQuery):
@@ -150,16 +114,6 @@ async def search(Mbot: Mbot, query: CallbackQuery):
       message = query.message
       await query.message.delete()
       client = sp
-      if query.message.from_user.id in LIM:
-        if LIM[int(query.message.from_user.id)] >= 1:
-          pr =  await query.message.reply("Sorry,Another download is in progress, try again after completing or You need to Upgrade your account .send /upgrade")
-          return
-      if query.message.from_user.id not in LIM:
-         if query.message.from_user.id not in PREM:
-            LIM[int(query.message.from_user.id)] = 0
-      else:
-         if query.message.from_user.id not in PREM:
-            LIM[int(query.message.from_user.id)] += 1
       song = await fetch_spotify_track(client,track)
       item = sp.track(track_id=track)
       PForCopy = await query.message.reply_photo(item['album']['images'][0]['url'],caption=f"🎧 Title : `{song['name']}­­`\n🎤 Artist : `{song['artist']}`­\n💽 Album : `{song['album']}`\n🗓 Release Year: `{song['year']}`\n❗️Is Local:`{item['is_local']}`\n 🌐ISRC: `{item['external_ids']['isrc']}`\n\n[IMAGE]({item['album']['images'][0]['url']})\nTrack id:`{song['deezer_id']}`",
