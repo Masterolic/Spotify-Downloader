@@ -32,7 +32,7 @@ from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInv
 #from info import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, MELCOW_NEW_USERS
 #from database.users_chats_db import db
 #from database.ia_filterdb import Media
-from utils import temp
+#from utils import temp
 #from Script import script
 from pyrogram.errors import ChatAdminRequired
 from mbot import BUG,Mbot
