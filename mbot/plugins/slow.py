@@ -3,19 +3,19 @@ from datetime import datetime
 import time 
 import spotipy
 from sys import executable
-from Script import script
+#from Script import script
 import psutil, shutil
 from pyrogram import filters,enums
 import os 
-from utils import get_size
+#from utils import get_size
 import asyncio
 from asyncio import sleep
-from Script import script 
+#from Script import script 
 from pyrogram.types import CallbackQuery, Message 
-from database.users_chats_db import db as dib
+#from database.users_chats_db import db as dib
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 from pyrogram.raw.functions import Ping
-from mbot import LOG_GROUP, OWNER_ID, SUDO_USERS, Mbot,AUTH_CHATS,PREM,BUG,LIM
+from mbot import LOG_GROUP, OWNER_ID, SUDO_USERS, Mbot,AUTH_CHATS,BUG
 from os import execvp,sys , execl,environ,mkdir
 from apscheduler.schedulers.background import BackgroundScheduler
 import shutil
@@ -36,7 +36,7 @@ from shutil import rmtree
 from mutagen import File
 from mutagen.flac import FLAC ,Picture
 from lyricsgenius import Genius 
-from database.database import Database
+#from database.database import Database
 supported_link = [ "www.deezer.com", "open.spotify.com",
 	         "deezer.com", "spotify.com"
 ]
@@ -53,7 +53,7 @@ NO_SPAM = [
    -1001690327681,
    -1001342321483,
 ]
-db = Database()
+#db = Database()
 genius = Genius("api_key")
 
 #@ScreenShotBot.on_callback_query()
@@ -81,16 +81,6 @@ async def _(c, m):
     elif int(message.chat.id) in NO_SPAM:
           return
     u = message.from_user.id
-    if u in LIM:
-       if LIM[int(m.from_user.id)] >= 1:
-          pr =  await message.reply("Sorry,Another download is in progress, try again after completing or You need to Upgrade your account .send /upgrade")
-          return
-    if u not in LIM:
-       if u not in PREM:
-          LIM[int(m.from_user.id)] = 0
-    else:
-         if u not in PREM:
-            LIM[int(m.from_user.id)] += 1
     K = await message.reply("⌛")
     query = m.text
     reply_markup=[]
@@ -109,8 +99,6 @@ async def _(c, m):
         await message.reply(f"No results found for your {query}") 
         await K.delete()
     finally:
-         if message.from_user.id not in PREM:
-           LIM[int(m.from_user.id)] -= 1
          await m.continue_propagation()
 
 @Mbot.on_callback_query(filters.regex(r"search"))
@@ -120,16 +108,6 @@ async def search(Mbot: Mbot, query: CallbackQuery):
       message = query.message
       await query.message.delete()
       client = sp
-      if query.message.from_user.id in LIM:
-        if LIM[int(query.message.from_user.id)] >= 1:
-          pr =  await query.message.reply("Sorry,Another download is in progress, try again after completing or You need to Upgrade your account .send /upgrade")
-          return
-      if query.message.from_user.id not in LIM:
-         if query.message.from_user.id not in PREM:
-            LIM[int(query.message.from_user.id)] = 0
-      else:
-         if query.message.from_user.id not in PREM:
-            LIM[int(query.message.from_user.id)] += 1
       song = await fetch_spotify_track(client,track)
       item = sp.track(track_id=track)
       thumbnail = await thumb_down(item['album']['images'][0]['url'],song.get('deezer_id'))
@@ -185,7 +163,7 @@ async def search(Mbot: Mbot, query: CallbackQuery):
             except:
                 pass
             try:
-            #    dForChat = await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
+                dForChat = await message.reply_chat_action(enums.ChatAction.UPLOAD_AUDIO)
               #    sleep(1)
                 AForCopy = await query.message.reply_audio(path,performer=f"{song.get('artist')}­",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail, parse_mode=enums.ParseMode.MARKDOWN,quote=True,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❌", callback_data="cancel")]]))
@@ -222,8 +200,6 @@ async def search(Mbot: Mbot, query: CallbackQuery):
             rmtree(randomdir)
         except:
             pass
-        if query.message.chat.id not in PREM:
-           LIM[int(query.message.from_user.id)] -= 1
         try:
             await query.message.reply_text(f"Done✅",   
          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
