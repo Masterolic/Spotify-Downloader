@@ -258,7 +258,7 @@ async def spotify_dl(Mbot,message: Message):
             #    if u in PREM:
            #        re = 2
            # #    else:
-                     re = play['tracks']['total']
+          #           re = play['tracks']['total']
            #     if re > sup:
          #          await message.reply(f"trying to send first 40 tracks of {play['name']} total {re}")     
             except Exception as e:
