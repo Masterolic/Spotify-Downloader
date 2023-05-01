@@ -134,11 +134,6 @@ async def spotify_dl(Mbot,message: Message):
         pass
         await  Mbot.send_message(BUG,f" Private r: Unsupported http [URI](link) Failed twice {message.chat.id}  {message.from_user.id} {message.from_user.mention}")     
     u = message.from_user.id
-    if u in users:
-        pr =  await message.reply("Sorry,Another download is in progress, try again after completing or You need to Upgrade your account .send /upgrade")
-        return #await Mbot.send_message(BUG,pr)
-    if u not in PREM:
-       us = users.append(u)
     randomdir = f"/tmp/{str(randint(1,100000000))}"
     mkdir(randomdir)
     try:
@@ -250,23 +245,22 @@ async def spotify_dl(Mbot,message: Message):
            # shutilrmtree(randomdir)
         elif item_type == "playlist":
             play = client.playlist(playlist_id=item_id,)
-            if u in PREM:
-               tracks = client.playlist_items(playlist_id=item_id,additional_types=['track'], offset=0, market=None)
-            else:
-                 tracks = client.playlist_items(playlist_id=item_id,additional_types=['track'], limit=30, offset=0, market=None) 
+           # if u in PREM:
+            tracks = client.playlist_items(playlist_id=item_id,additional_types=['track'], offset=0, market=None)   
+         #        tracks = client.playlist_items(playlist_id=item_id,additional_types=['track'], limit=30, offset=0, market=None) 
             total_tracks = tracks.get('total')
             track_no = 1
             try:
                 PForCopy = await message.reply_photo(play['images'][0]['url'],
                 caption=f"▶️Playlist:{play['name']}\n📝Description:{play['description']}\n👤Owner:{play['owner']['display_name']}\n❤️Followers:{play['followers']['total']}\n🔢 Total Track:{play['tracks']['total']}\n\n[IMAGES]({play['images'][0]['url']})\n{play['uri']}")
           #      document= await message.reply_document(play['images'][0]['url'])
-                sup = 40
-                if u in PREM:
-                   re = 2
-                else:
+            #    sup = 40
+            #    if u in PREM:
+           #        re = 2
+           # #    else:
                      re = play['tracks']['total']
-                if re > sup:
-                   await message.reply(f"trying to send first 40 tracks of {play['name']} total {re}")     
+           #     if re > sup:
+         #          await message.reply(f"trying to send first 40 tracks of {play['name']} total {re}")     
             except Exception as e:
                 pass
                 PForCopy = await message.reply(f"▶️Playlist:{play['name']}\n📝Description:{play['description']}\n👤Owner:{play['owner']['display_name']}\n❤️Followers:{play['followers']['total']}\n🔢 Total Track:{play['tracks']['total']}\n\n[IMAGES]({play['images'][0]['url']})\n{play['tracks']['uri']}")
@@ -354,11 +348,6 @@ async def spotify_dl(Mbot,message: Message):
                 pass
                 err = print(e)
                 PForCopy = await message.reply(f"💽Album: {alb['name']}\n👥Artists: {alb['artists'][0]['name']}\n🎧Total tracks{alb['total_tracks']}\n🗂Category: {alb['album_type']}\n📆Published on: {alb['release_date']}\n\n[IMAGE]({alb['images'][0]['url']})\n{alb['uri']}")
-            if u in PREM:
-               tracks = client.album_tracks(album_id=item_id, offset=0, market=None)
-            else:
-                 tracks = client.album_tracks(album_id=item_id, limit=30, offset=0, market=None)
-
             for track in tracks['items']:
                 item = client.track(track_id=track['id'])
                 song = await fetch_spotify_track(client,track.get('id'))
@@ -556,8 +545,6 @@ async def spotify_dl(Mbot,message: Message):
             rmtree(randomdir)
         except:
             pass
-        if u not in PREM:
-           users.remove(u)
         try:
             await message.reply_text(f"Done✅",   
          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
