@@ -20,7 +20,7 @@ from os import execvp,sys , execl,environ,mkdir
 from apscheduler.schedulers.background import BackgroundScheduler
 import shutil
 from spotipy.oauth2 import SpotifyClientCredentials
-from tg import get_readable_file_size, get_readable_time
+#from tg import get_readable_file_size, get_readable_time
 botStartTime = time.time()
 MAIN = bool(environ.get('MAIN', False))
 SLEEP = bool(environ.get('SLEEP', False))
