@@ -20,6 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import os
 from random import randint 
 #from yt.yt_dlp import YoutubeDL
 from yt_dlp import YoutubeDL
@@ -126,9 +127,9 @@ def fetch_spotify_track(client,item_id):
             "deezer_id": deezer_id,
         }
 @sync_to_async
-def download_songs(song, download_directory='.'):
-    file = f"{download_directory}/{song['name']} - {song['artist']}"
-    query = f"{song.get('name')} - {song.get('artist')} lyrics".replace(":", "").replace("\"", "")
+def download_songs(item, download_directory='.'):
+    file = f"{download_directory}/{item['name']} - {item['artists'][0]['name']}"
+    query = f"{item['name']} - {item['artists'][0]['name']} lyrics".replace(":", "").replace("\"", "")
     ydl_opts = {
         'format': "bestaudio",
         'default_search': 'ytsearch',
@@ -141,7 +142,7 @@ def download_songs(song, download_directory='.'):
         "geo_bypass": True,
 
         "nocheckcertificate": True,
-        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '824'}],
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '693'}],
     }
 
     with YoutubeDL(ydl_opts) as ydl:
@@ -152,7 +153,7 @@ def download_songs(song, download_directory='.'):
             return f"{filename}.flac"
         except IndexError:
             pass
-            quer = f"{song['name']} lyrics"
+            quer = f"{item['name']} lyrics"
             video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
             info = ydl.extract_info(video)
             filename = ydl.prepare_filename(info)
@@ -165,12 +166,11 @@ def download_songs(song, download_directory='.'):
             return f"{filename}.flac"
         except Exception as e:
             LOGGER.error(e)
-
 @sync_to_async
 def copy(P,A):
     P.copy(BUG)
     A.copy(BUG)
 @sync_to_async
-def forward(P,A):
-    P.copy(LOG_GROUP)
+def forward(A,P):
     A.copy(LOG_GROUP)
+    P.copy(LOG_GROUP)
