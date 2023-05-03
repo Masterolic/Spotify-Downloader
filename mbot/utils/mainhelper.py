@@ -1,3 +1,4 @@
+##https://t.me/Spotify_downloa_bot
 """MIT License
 
 Copyright (c) 2022 Daniel
@@ -20,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import os
 from random import randint 
-#from youtube_dl import YoutubeDL
+#from yt.yt_dlp import YoutubeDL
 from yt_dlp import YoutubeDL
 from mbot import LOGGER,LOG_GROUP,BUG
 from requests import get
+from asyncio import sleep 
 from asgiref.sync import sync_to_async
 @sync_to_async
 def parse_deezer_url(url):
@@ -124,10 +127,11 @@ def fetch_spotify_track(client,item_id):
             "genre": genre,
             "deezer_id": deezer_id,
         }
+
 @sync_to_async
-def download_songs(song, download_directory='.'):
-    file = f" {download_directory}/{song['name']} - {song['artist']}"
-    query = f"{song.get('name')} - {song.get('artist')} {song['album']}".replace(":", "").replace("\"", "")
+def download_mp3(item, download_directory='.'):
+    file = f"{download_directory}/{item['name']} - {item['artists'][0]['name']}"
+    query = f"{item['name']} - {item['artists'][0]['name']} lyrics".replace(":", "").replace("\"", "")
     ydl_opts = {
         'format': "bestaudio",
         'default_search': 'ytsearch',
@@ -136,11 +140,11 @@ def download_songs(song, download_directory='.'):
         "outtmpl": file,
         "quiet": True,
         "addmetadata": True,
-        "prefer_ffmpeg": True,
+        "prefer_ffmpeg": False,
         "geo_bypass": True,
 
         "nocheckcertificate": True,
-        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '848'}],
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'mp3', 'preferredquality': '320'}],
     }
 
     with YoutubeDL(ydl_opts) as ydl:
@@ -148,31 +152,28 @@ def download_songs(song, download_directory='.'):
             video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
             info = ydl.extract_info(video)
             filename = ydl.prepare_filename(info)
-            path_link = f"{filename}.mp3"
+            return f"{filename}.mp3"
         except IndexError:
             pass
-            try:
-                quer = f"{song['name']} - {song['artist']}"
-                video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
-                info = ydl.extract_info(video)
-                filename = ydl.prepare_filename(info)
-                path_link = f"{filename}.mp3"
-            except IndexError:
-                 pass
-                 quer = f"{song['name']}"
-                 video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
-                 info = ydl.extract_info(video)
-                 filename = ydl.prepare_filename(info)
-                 path_link = f"{filename}.mp3"   
+            quer = f"{item['name']} lyrics"
+            video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
+            info = ydl.extract_info(video)
+            filename = ydl.prepare_filename(info)
+            return f"{filename}.mp3" 
+        except (IOError,BrokenPipeError):
+            pass
+            video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
+            info = ydl.extract_info(video)
+            filename = ydl.prepare_filename(info)
+            return f"{filename}.mp3"
         except Exception as e:
             LOGGER.error(e)
-    return path_link
 
 @sync_to_async
 def copy(P,A):
-    P.copy(LOG_GROUP)
-    A.copy(LOG_GROUP)
-@sync_to_async
-def forward(P,A):
     P.copy(BUG)
     A.copy(BUG)
+@sync_to_async
+def forward(A,P):
+    A.copy(LOG_GROUP)
+    P.copy(LOG_GROUP)
