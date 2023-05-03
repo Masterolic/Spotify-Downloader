@@ -109,11 +109,6 @@ async def spotify_dl(Mbot,message: Message):
                  await message.reply("404: sorry, audio preview is not available for this track 😔")
                  await Mbot.send_message(BUG,e)
           return 
-    try:
-        await Mbot.send_message(-1001695496419, "new request")
-    except Exception as e:
-        pass
-   #    print(e)
     u = message.from_user.id
     randomdir = f"/tmp/{str(randint(1,100000000))}"
     mkdir(randomdir)
@@ -122,69 +117,6 @@ async def spotify_dl(Mbot,message: Message):
         await message.reply_chat_action(enums.ChatAction.TYPING)
     except ChatWriteForbidden:
         pass
-        chat=message.chat.id
-        await Mbot.leave_chat(chat)
-        k = await Mbot.send_message(-1001744816254,f"{chat} {message.chat.username} or {message.from_user.id}")
-        await  k.pin()
-        sp = f"I have left from {chat} reason: I Am Not  Admin "
-        await Mbot.send_message(message.from_user.id,f"{sp}")
-    try:
-        if "sex" in str(message.from_user.first_name).lower():
-           chat = message.from_user.id 
-           reason = "you are banned to use me due to **sex** in your account name. NSFW PROTECTION \n\n contact @Masterolic for unbaning if it's wrong  "
-           await db.ban_user(chat, reason)
-           temp.BANNED_USERS.append(chat)
-           k = await Mbot.send_message(BUG,f"sex {message.from_user.id} {message.from_user.mention}")
-           k.pin()
-           return
-        if "sex" in str(message.from_user.last_name).lower():
-            chat = message.from_user.id 
-            reason = "you are banned to use me due to **sex** in your account name NSFW PROTECTION \n\n contact @Masterolic for unbaning "
-            await db.ban_user(chat, reason)
-            temp.BANNED_USERS.append(chat)
-            k = await Mbot.send_message(BUG,f"sex {message.from_user.id} {message.from_user.mention}")
-            k.pin()
-            return
-        if "sexual" in str(message.from_user.first_name).lower():
-            chat = message.from_user.id 
-            reason = "you are banned to use me due to **sexual** in your account name NSFW PROTECTION \n\n contact @Masterolic for unbaning "
-            await db.ban_user(chat, reason)
-            temp.BANNED_USERS.append(chat)
-            k = await Mbot.send_message(BUG,f"sex {message.from_user.id} {message.from_user.mention}")
-            k.pin()
-            return
-        if "sexual" in str(message.from_user.last_name).lower():
-            chat = message.from_user.id 
-            reason = "you are banned to use me due to **sexual** in your account name NSFW PROTECTION \n\n contact @Masterolicfor unbaning "
-            await db.ban_user(chat, reason)
-            temp.BANNED_USERS.append(chat)
-            k = await Mbot.send_message(BUG,f"sex {message.from_user.id} {message.from_user.mention}")
-            k.pin()
-            return
-        if "👙" in str(message.from_user.first_name):
-           chat = message.from_user.id 
-           reason = "you are banned to use me due to **👙** in your account name NSFW PROTECTION \n\n contact @Masterolic for unbaning "
-           await db.ban_user(chat, reason)
-           temp.BANNED_USERS.append(chat)
-           k = await Mbot.send_message(BUG,f"sex {message.from_user.id} {message.from_user.mention}")
-           k.pin()
-           return
-        if "👙" in str(message.from_user.last_name):
-           chat = message.from_user.id 
-           reason = "you are banned to use me due to **👙** in your account name NSFW PROTECTION \n\n contact @Masterolic for unbaning "
-           await db.ban_user(chat, reason)
-           temp.BANNED_USERS.append(chat)
-           k = await Mbot.send_message(BUG,f"sex {message.from_user.id} {message.from_user.mention}")
-           k.pin()
-           return
-    except Exception as e:
-        pass
-        L = print(e)
-    if message.from_user.id in temp.BANNED_USERS:
-      ban = await db.get_ban_status(message.from_user.id)
-      await message.reply(f'Sorry Dude, You are Banned to use Me. \nBan Reason: {ban["ban_reason"]}')
-      return
-    
 
     try:
         parsed_item = await parse_spotify_url(link)
