@@ -534,6 +534,7 @@ async def spotify_dl(Mbot,message: Message):
     except Exception as e:
         pass
         LOGGER.error(e)
+        await m.edit(e)
         await Mbot.send_message(BUG,f" Finnal pv {e}")
       #  K = await message.reply_text(f"private [{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) failed to send error: {e}")
      #   H = await message.reply_text(f"Done✅",   
@@ -550,7 +551,7 @@ async def spotify_dl(Mbot,message: Message):
             await message.reply_text(f"Done✅",   
          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
             await message.reply_text(f"Check out @spotify_downloa (music)  @spotifynewss(News)")
-            await m.edit(e)
+            await m.delete()
         except:
             pass 
        # await message.reply_text(f"thumbnail and details is temp removed due to  there is  something going on telegram side:)")
