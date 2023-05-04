@@ -35,7 +35,7 @@ async def start(client,message):
             text="Bot Channel", url="https://t.me/Spotify_downloa"),
         InlineKeyboardButton(
             text="Repo",
-            url="https://github.com/Masterolic/Spotify-repo/"),
+            url="https://github.com/Masterolic/Spotify-Downloader/"),
         InlineKeyboardButton(text="Help",callback_data="helphome")
         ],
         [
