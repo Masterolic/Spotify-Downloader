@@ -167,6 +167,52 @@ def download_songs(item, download_directory='.'):
             return f"{filename}.flac"
         except Exception as e:
             LOGGER.error(e)
+
+@sync_to_async
+def download_dez(song, download_directory='.'):
+    file = f"{download_directory}/{song['name']} - {song['artist']}.flac"
+    query = f"{song.get('name')} - {song.get('artist')} {song['album']}".replace(":", "").replace("\"", "")
+    ydl_opts = {
+        'format': "bestaudio",
+        'default_search': 'ytsearch',
+        'noplaylist': True,
+        "nocheckcertificate": True,
+        "outtmpl": file,
+        "quiet": True,
+        "addmetadata": True,
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+
+        "nocheckcertificate": True,
+        "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '848'}],
+    }
+
+    with YoutubeDL(ydl_opts) as ydl:
+        try:
+            video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
+            info = ydl.extract_info(video)
+            filename = ydl.prepare_filename(info)
+            path_link = filename
+            return path_link
+        except IndexError:
+            pass
+            try:
+                quer = f"{song['name']} - {song['artist']}"
+                video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
+                info = ydl.extract_info(video)
+                filename = ydl.prepare_filename(info)
+                path_link = filename
+            except IndexError:
+                 pass
+                 quer = f"{song['name']}"
+                 video = ydl.extract_info(f"ytsearch:{quer}", download=False)['entries'][0]['id']
+                 info = ydl.extract_info(video)
+                 filename = ydl.prepare_filename(info)
+                 path_link = filename   
+        except Exception as e:
+            LOGGER.error(e)
+    return path_link
+
 @sync_to_async
 def copy(P,A):
     P.copy(BUG)
