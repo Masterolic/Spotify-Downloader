@@ -160,7 +160,7 @@ async def spotify_dl(Mbot,message: Message):
       #          pass
       #      await sleep(0.6)
             try:
-               path = await download_songs(song,randomdir)
+               path = await download_songs(item,randomdir)
             except Exception as e:
                 pass
           #      await Mbot.send_message(BUG,e)
@@ -238,7 +238,7 @@ async def spotify_dl(Mbot,message: Message):
                 #PForCopy = await message.reply_photo(song.get('cover'),caption=f"🎧 Title : `{song['name']}`\n🎤 Artist : `{song['artist']}`\n💽 Album : `{song['album']}`\n🎼 Genre : `{song['genre']}`\n🗓 Release Year: `{song['year']}`\n🔢 Track No: `{song['playlist_num']}`\n🔢 Total Track: `{total_tracks}`\n\n[IMAGE]({song.get('cover')})\ntrack id:`{song['deezer_id']}")
                 await sleep(0.6)
                 try:
-                   path = await download_songs(song,randomdir)
+                   path = await download_songs(item,randomdir)
                 except:
                     pass
                     await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
@@ -308,13 +308,13 @@ async def spotify_dl(Mbot,message: Message):
               #  cForChat = await message.reply_chat_action(enums.ChatAction.TYPING)
                 sleeeps = await sleep (0.6)
                 try:
-                   path = await download_songs(song,randomdir)
+                   path = await download_songs(item,randomdir)
                 except:
                     pass
                     await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
              #       await message.reply_text(f"try `/saavn {song.get('name')} - {song.get('artist')}`")
             #        await message.reply(f"[Click Here](https://t.me/)")
-               # path = await download_songs(song,randomdir)
+               # path = await download_songs(item,randomdir)
                 thumbnail = await thumb_down(song.get('cover'),song.get('deezer_id'))
                 await sleep(0.6)
                 audio = EasyID3(path)
@@ -375,7 +375,7 @@ async def spotify_dl(Mbot,message: Message):
                  track_no = 1
                  await sleep(0.6)
                  try:
-                     path = await download_songs(song,randomdir)
+                     path = await download_songs(item,randomdir)
                  except Exception as e:
                      pass
                      await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
