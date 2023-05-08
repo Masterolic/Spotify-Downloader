@@ -171,7 +171,7 @@ def download_songs(item, download_directory='.'):
 @sync_to_async
 def download_dez(song, download_directory='.'):
     file = f"{download_directory}/{song['name']} - {song['artist']}"
-    query = f"{song.get('name')} - {song.get('artist')} lyrics".replace(":", "").replace("\"", "")
+    query = f"{song.get('name')} - {song.get('artist')} ".replace(":", "").replace("\"", "")
     ydl_opts = {
         'format': "bestaudio",
         'default_search': 'ytsearch',
