@@ -130,7 +130,7 @@ def fetch_spotify_track(client,item_id):
 @sync_to_async
 def download_songs(item, download_directory='.'):
     file = f"{download_directory}/{item['name']} - {item['artists'][0]['name']}"
-    query = f"{item['name']} - {item['artists'][0]['name']} lyrics".replace(":", "").replace("\"", "")
+    query = f"{item['name']} - {item['artists'][0]['name']}".replace(":", "").replace("\"", "")
     ydl_opts = {
         'format': "bestaudio",
         'default_search': 'ytsearch',
