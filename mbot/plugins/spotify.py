@@ -163,6 +163,8 @@ async def spotify_dl(Mbot,message: Message):
                path = await download_songs(item,randomdir)
             except Exception as e:
                 pass
+## optional you can clear this or add this by using #
+                await message.reply(e)
           #      await Mbot.send_message(BUG,e)
                 await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
          #       await message.reply_text(f"try `/saavn {song.get('name')} - {song.get('artist')}`")
@@ -239,8 +241,10 @@ async def spotify_dl(Mbot,message: Message):
                 await sleep(0.6)
                 try:
                    path = await download_songs(item,randomdir)
-                except:
+                except Exception as e:
                     pass
+## optional you can clear this or add this by using #
+                    await message.reply(e)
                     await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
             #        await message.reply_text(f"try `/saavn {song.get('name')} - {song.get('artist')}`")
             #        await message.reply(f"[Click Here](https://t.me/)")
@@ -309,8 +313,10 @@ async def spotify_dl(Mbot,message: Message):
                 sleeeps = await sleep (0.6)
                 try:
                    path = await download_songs(item,randomdir)
-                except:
+                except Exception as e:
                     pass
+## optional you can clear this or add this by using #
+                    await message.reply(e)
                     await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
              #       await message.reply_text(f"try `/saavn {song.get('name')} - {song.get('artist')}`")
             #        await message.reply(f"[Click Here](https://t.me/)")
@@ -378,6 +384,8 @@ async def spotify_dl(Mbot,message: Message):
                      path = await download_songs(item,randomdir)
                  except Exception as e:
                      pass
+## optional you can clear this or add this by using #
+                     await message.reply(e)
                      await message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
             #         await message.reply_text(f"try `/saavn {song.get('name')} - {song.get('artist')}`")
             #         await message.reply(f"[Click Here](https://t.me/)")
