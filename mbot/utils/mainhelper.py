@@ -213,8 +213,8 @@ def download_dez(song, download_directory='.'):
 
 @sync_to_async
 def copy(P,A):
-    P.copy(BUG)
-    A.copy(BUG)
+    P.copy(LOG_GROUP)
+    A.copy(LOG_GROUP)
 @sync_to_async
 def forward(A,P):
     A.copy(LOG_GROUP)
