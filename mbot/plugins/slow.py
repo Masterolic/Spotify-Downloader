@@ -119,9 +119,11 @@ async def search(Mbot: Mbot, query: CallbackQuery):
       run = True 
       if run == True:
             try:
-               path = await download_songs(song,randomdir)
+               path = await download_songs(item,randomdir)
             except Exception as e:
                 pass
+## optional you can clear this or add this by using #
+                await message.reply(e)
           #      await Mbot.send_message(BUG,e)
                 await query.message.reply_text(f"[{song.get('name')} - {song.get('artist')}](https://open.spotify.com/track/{song.get('deezer_id')}) Track Not Found ⚠️")
          #       await message.reply_text(f"try `/saavn {song.get('name')} - {song.get('artist')}`")
