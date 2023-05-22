@@ -67,7 +67,7 @@ LOG_TEXT_P = """
 ID - <code>{}</code>
 Name - {}
 """
-@Mbot.on_message(filters.regex(r'https?://[^\s]+') & filters.incoming & filters.private | filters.incoming & filters.private & filters.regex(r"spotify:"), group=1)
+@Mbot.on_message(filters.regex(r'https?://[^\s]+') & filters.incoming| filters.incoming & filters.regex(r"spotify:"), group=1)
 async def spotify_dl(Mbot,message: Message):
     if MAIN:
        await message.reply_text(f"Bot Is Under Maintenance ⚠️")
