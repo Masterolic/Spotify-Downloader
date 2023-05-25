@@ -61,7 +61,7 @@ genius = Genius("api_key")
 #async def __(c, m):
 #    await foo(c, m, cb=True)
 
-
+## Remove & filters.private to respond in group's Also 
 @Mbot.on_message(filters.incoming & filters.text & filters.private,group=3)
 async def _(c, m):
     message = m
