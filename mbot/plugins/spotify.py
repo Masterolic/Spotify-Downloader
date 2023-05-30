@@ -306,7 +306,7 @@ async def spotify_dl(Mbot,message: Message):
           #  else:
           #       tracks = client.album_tracks(album_id=item_id, limit=30, offset=0, market=None)
 
-            for track in tracks['items']:
+            for track in alb['tracks']['items']:
                 item = client.track(track_id=track['id'])
                 song = await fetch_spotify_track(client,track.get('id'))
               #  cForChat = await message.reply_chat_action(enums.ChatAction.TYPING)
