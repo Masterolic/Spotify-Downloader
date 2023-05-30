@@ -353,7 +353,7 @@ async def spotify_dl(Mbot,message: Message):
                 pass
                 err = print(e)
                 PForCopy = await message.reply(f"💽Album: {alb['name']}\n👥Artists: {alb['artists'][0]['name']}\n🎧Total tracks{alb['total_tracks']}\n🗂Category: {alb['album_type']}\n📆Published on: {alb['release_date']}\n\n[IMAGE]({alb['images'][0]['url']})\n{alb['uri']}")
-            for track in tracks['items']:
+            for track in alb['tracks']['items']:
                 item = client.track(track_id=track['id'])
                 song = await fetch_spotify_track(client,track.get('id'))
               #  cForChat = await message.reply_chat_action(enums.ChatAction.TYPING)
