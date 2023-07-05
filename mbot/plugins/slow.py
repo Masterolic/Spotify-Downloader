@@ -1,4 +1,3 @@
-###https://Spotify-downloa_bot
 from pyrogram.errors import FloodWait,Forbidden,UserIsBlocked,MessageNotModified,ChatWriteForbidden, SlowmodeWait
 from datetime import datetime
 import time 
