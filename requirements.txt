@@ -1,5 +1,5 @@
 ###
-pyrogram
+pyrogram==2.0.38
 tgcrypto
 lyricsgenius
 https://github.com/Masterolic/yt-dlp/archive/refs/heads/master.zip
