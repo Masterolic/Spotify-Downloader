@@ -201,7 +201,8 @@ async def spotify_dl(Mbot,message: Message):
                 pass
             audio.save()
             AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}­",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail, parse_mode=enums.ParseMode.MARKDOWN,quote=True)
-            await copy(PForCopy,AForCopy)
+            if LOG_GROUP:
+               await copy(PForCopy,AForCopy)
         elif item_type == "playlist":
             play = client.playlist(playlist_id=item_id,)
            # if u in PREM:
@@ -285,11 +286,12 @@ async def spotify_dl(Mbot,message: Message):
                 except:
                   pass
                 #AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode=enums.ParseMode.MARKDOWN,quote=True)
-                await copy(PForCopy,AForCopy)
+                track_no += 1
+                if LOG_GROUP:
+                   await copy(PForCopy,AForCopy)
                 #feedback = await message.reply_text(f"Done✅",   
                  #reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
                # shutil.rmtree(randomdir)
-                track_no += 1
            
         elif item_type == "album":
             alb = client.album(album_id=item_id,)
@@ -358,7 +360,8 @@ async def spotify_dl(Mbot,message: Message):
                            await message.reply_text(f"⚠️")
                 else:
                     AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode=enums.ParseMode.MARKDOWN,quote=True)
-                await copy(PForCopy,AForCopy)
+                if LOG_GROUP:
+                   await copy(PForCopy,AForCopy)
            
         elif item_type == "artist":
              art = client.artist(item_id)
@@ -422,7 +425,8 @@ async def spotify_dl(Mbot,message: Message):
                   # print(e)
                  audio.save()
                  AForCopy = await message.reply_audio(path,performer=f"{song.get('artist')}­",title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail, parse_mode=enums.ParseMode.MARKDOWN,quote=True)
-                 await copy(PForCopy,AForCopy)
+                 if LOG_GROUP:
+                    await copy(PForCopy,AForCopy)
     except MissingSchema:
         pass
         await message.reply("are you sure it's a valid song 🤨?")
