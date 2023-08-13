@@ -242,7 +242,8 @@ async def spotify_dl(Mbot,message: Message):
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❌", callback_data="cancel")]]))
             except:
                 pass
-            await forward(PForCopy,AForCopy)
+            if LOG_GROUP:
+               await forward(PForCopy,AForCopy)
             #feedback = await message.reply_text(f"Done✅",   
              #reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
            # shutilrmtree(randomdir)
@@ -336,12 +337,14 @@ async def spotify_dl(Mbot,message: Message):
                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❌", callback_data="cancel")]])) 
                 except:
                   pass
+                track_no += 1
                 #AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode=enums.ParseMode.MARKDOWN,quote=True,
-                await forward(PForCopy,AForCopy)
+                if LOG_GROUP:
+                   await forward(PForCopy,AForCopy)
                 #feedback = await message.reply_text(f"Done✅",   
                  #reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
                # shutil.rmtree(randomdir)
-                track_no += 1
+
            
         elif item_type == "album":
             alb = client.album(album_id=item_id,)
@@ -411,8 +414,9 @@ async def spotify_dl(Mbot,message: Message):
                     AForCopy = await message.reply_audio(path,performer=song.get('artist'),title=f"{song.get('name')} - {song.get('artist')}",caption=f"[{song.get('name')}](https://open.spotify.com/track/{song.get('deezer_id')}) | {song.get('album')} - {song.get('artist')}",thumb=thumbnail,parse_mode=enums.ParseMode.MARKDOWN,quote=True,
                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❌", callback_data="cancel")]]))
                 except:
-                    pass
-                await forward(PForCopy,AForCopy)
+                    pass 
+                if LOG_GROUP:
+                   await forward(PForCopy,AForCopy)
                 #feedback = await message.reply_text(f"Done✅",   
                  # reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Feedback", callback_data="feed")]]))
                 #shutil.rmtree(randomdir)
@@ -490,7 +494,8 @@ async def spotify_dl(Mbot,message: Message):
                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❌", callback_data="cancel")]]))
                  except:
                      pass
-                 await forward(PForCopy,AForCopy)
+                 if LOG_GROUP:
+                    await forward(PForCopy,AForCopy)
     except MissingSchema:
         pass
         await message.reply("400: Are You Sure It's valid URL🤨?")
