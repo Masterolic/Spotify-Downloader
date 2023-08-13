@@ -27,7 +27,7 @@ from mbot import AUTH_CHATS, LOG_GROUP, LOGGER, Mbot
 from pyrogram import filters
 from mbot.utils.ytdl import getIds,ytdl_down,audio_opt,thumb_down
 
-@Mbot.on_message(filters.regex(r'(https?://)?.*you[^\s]+') & filters.private | filters.command(["yt","ytd","ytmusic"]) & filters.regex(r'https?://.*you[^\s]+') & filters.chat(AUTH_CHATS))
+@Mbot.on_message(filters.regex(r'(https?:\/\/(?:www\.)?youtu\.?be(?:\.com)?\/.*)') & filters.incoming| filters.command(["yt","ytd","ytmusic"]) & filters.regex(r'(https?:\/\/(?:www\.)?youtu\.?be(?:\.com)?\/.*)') & filters.incoming)
 async def _(_,message):
     m = await message.reply_text("Gathering information... Please Wait.")
     link = message.matches[0].group(0)
