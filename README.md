@@ -7,7 +7,13 @@
 > Make Sure That Ffmpeg is Installed!
 > If Your Vps/Local Server Location Is US Try To Change Location Or Use Cookies And Add This Line ["cookiefile":"path",](https://github.com/Masterolic/Spotify-Downloader/blob/fe859965e62a5ca8f29fc69185cd132d456e4bfd/mbot/utils/mainhelper.py#L144)
 > path is defined as where is your cookie file to get cookie reffer [here](https://www.reddit.com/r/youtubedl/wiki/cookies/)
-> US Region Block yt-dlp Request 
+> US Region Block yt-dlp Request
+
+#DO YOU USE HEROKU TO DEPLOY?
+> Make Sure That To Change Region To Europe Else It Wont Work See Below Image
+![1000003315](https://github.com/Masterolic/Spotify-Downloader/assets/93469093/2dbd5d1a-7ee6-47c5-af19-e839d30e778d)
+
+
 ### NOTE
 > This  Is  Old  repository of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot) so, this maybe buggy and lack of many features than our bot ,but still this will be maintained and updated some features when we do new updates
 ### WHICH  LANGUAGE AND TELEGRAM API  USED IN THIS ?
