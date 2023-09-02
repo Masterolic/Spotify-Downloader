@@ -3,6 +3,11 @@
 [DEMO VERSION  @Spotify_downloa_bot ](https://t.me/Spotify_downloa_bot)
 ### IS THIS STILL MAINTAINING?
 > Yes ,this repository is still maintained and will be adding new feature's also
+## WHY AUDIO FILES ARE NOT SENDING?
+> Make Sure That Ffmpeg is Installed!
+> If Your Vps/Local Server Location Is US Try To Change Location Or Use Cookies And Add This Line ["cookiefile":"path",](https://github.com/Masterolic/Spotify-Downloader/blob/fe859965e62a5ca8f29fc69185cd132d456e4bfd/mbot/utils/mainhelper.py#L144)
+> path is defined as where is your cookie file to get cookie reffer [here](https://www.reddit.com/r/youtubedl/wiki/cookies/)
+> US Region Block yt-dlp Request 
 ### NOTE
 > This  Is  Old  repository of [@spotify_downloa_bot](https://t.me/Spotify_downloa_bot) so, this maybe buggy and lack of many features than our bot ,but still this will be maintained and updated some features when we do new updates
 ### WHICH  LANGUAGE AND TELEGRAM API  USED IN THIS ?
