@@ -1,8 +1,8 @@
 ###
-pyrogram==2.0.38
+git+https://github.com/Masterolic/pyrogram.git
 tgcrypto
 lyricsgenius
-https://github.com/Masterolic/yt-dlp/archive/refs/heads/master.zip
+git+https://github.com/yt-dlp/yt-dlp.git
 python-dotenv
 requests
 asgiref
