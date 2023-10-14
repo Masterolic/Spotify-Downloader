@@ -22,3 +22,4 @@ youtube-search-python
 Pillow
 wget
 youtube-search-python
+eyed3
