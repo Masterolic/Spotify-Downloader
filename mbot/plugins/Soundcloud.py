@@ -68,6 +68,7 @@ async def link_handler(Mbot, message):
        os.remove(path)
     except Exception as e:
         pass
-        await Mbot.send_message(BUG,f"SoundCloud  {e}")
+        await message.reply(e)
+    #    await Mbot.send_message(BUG,f"SoundCloud  {e}")
         await m.delete()
         os.remove(path)
