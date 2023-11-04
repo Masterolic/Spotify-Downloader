@@ -72,8 +72,8 @@ HELP = {
     "Youtube": "Send **Youtube** Link in Chat to Download Song.",
     "Spotify": "Send **Spotify** Track/Playlist/Album/Show/Episode's Link. I'll Download It For You.",
     "Deezer": "Send Deezer Playlist/Album/Track Link. I'll Download It For You.",
-    "Jiosaavn": "Not Implemented yet",
-    "SoundCloud": "Not Implemented yet",
+    "Jiosaavn": "send format `/saavn music name`. Eg `/saavn dil ko karar` ",
+    "SoundCloud": "send **Sound Cloud link in Chat To Download Song.",
     "Group": "Will add later."
 }
 
