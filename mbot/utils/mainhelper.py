@@ -246,8 +246,8 @@ def download_dez(song, download_directory='.'):
              try:
                  video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
                  info = ydl.extract_info(video)
-                filename = ydl.prepare_filename(info)
-                return f"{filename}.flac"
+                 filename = ydl.prepare_filename(info)
+                 return f"{filename}.flac"
              except Exception as e:
                  print(e)
 @sync_to_async
