@@ -8,7 +8,7 @@ from youtube_search import YoutubeSearch
 from yt_dlp import YoutubeDL
 from requests import get
 import traceback,os
-FIXIE_SOCKS_HOST= environ.get('FIXIE_SOCKS_HOST',"127.1.0.1")
+FIXIE_SOCKS_HOST= environ.get('FIXIE_SOCKS_HOST')
 async def thumb_down(videoId):
     with open(f"/tmp/{videoId}.jpg","wb") as file:
         file.write(get(f"https://img.youtube.com/vi/{videoId}/default.jpg").content)
@@ -105,6 +105,7 @@ async def ytdl_down(path,video_url,id):
             return f"{filename}.{qa}"
         except Exception as e:
             pass
+          if FIXIE_SOCKS_HOST:
             try:
                 ydl_opts = {
                 'format': "bestaudio",
