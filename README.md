@@ -75,6 +75,10 @@ python3 -m mbot
 
 `genius_api` Get it from https://genius.com/developers
 
+`FIXIE_SOCKS_HOST` Paste Your Proxy Url If Available It Prevents Ip Block And Acces Restricted Content.If You Are Using You Can Buy From There See Below Video
+https://github.com/Masterolic/Spotify-Downloader/assets/93469093/e41a1737-b1ee-489b-8cd0-92013fff696d
+
+
 ### CAN I CONTACT OWNER ?
  >  IF you need any help or need to add any features or tell feedback , don't hesitate to contact me 
 
