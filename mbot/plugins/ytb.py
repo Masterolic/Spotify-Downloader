@@ -104,7 +104,6 @@ async def ytdl_down(path,video_url,id):
             print(filename)
             return f"{filename}.{qa}"
         except Exception as e:
-            pass
           if FIXIE_SOCKS_HOST:
             try:
                 ydl_opts = {
