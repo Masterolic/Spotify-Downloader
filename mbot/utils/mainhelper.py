@@ -29,6 +29,7 @@ from mbot import LOGGER,LOG_GROUP,BUG
 from requests import get
 from asyncio import sleep 
 from asgiref.sync import sync_to_async
+FIXIE_SOCKS_HOST = os.environ.get('FIXIE_SOCKS_HOST')
 @sync_to_async
 def parse_deezer_url(url):
     url = get(url).url
@@ -166,8 +167,28 @@ def download_songs(item, download_directory='.'):
             filename = ydl.prepare_filename(info)
             return f"{filename}.flac"
         except Exception as e:
-            LOGGER.error(e)
-
+            if FIXIE_SOCKS_HOST:
+                ydl_opts = {
+               'format': "bestaudio",
+               'default_search': 'ytsearch',
+               'noplaylist': True,
+               "nocheckcertificate": True,
+               "outtmpl": file,
+               "quiet": True,
+               "addmetadata": True,
+               "prefer_ffmpeg": False,
+               "geo_bypass": True,
+               "proxy": f"socks5://{FIXIE_SOCKS_HOST}",
+               "nocheckcertificate": True,
+               "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '693'}],
+               }
+                try:
+                  video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
+                  info = ydl.extract_info(video)
+                  filename = ydl.prepare_filename(info)
+                  return f"{filename}.flac"
+                except Exception as e:
+                    print(e)
 @sync_to_async
 def download_dez(song, download_directory='.'):
     file = f"{download_directory}/{song['name']} - {song['artist']}"
@@ -207,7 +228,28 @@ def download_dez(song, download_directory='.'):
             filename = ydl.prepare_filename(info)
             return f"{filename}.flac"
         except Exception as e:
-            LOGGER.error(e)
+          if FIXIE_SOCKS_HOST:
+             ydl_opts = {
+            'format': "bestaudio",
+            'default_search': 'ytsearch',
+            'noplaylist': True,
+            "nocheckcertificate": True,
+            "outtmpl": file,
+            "quiet": True,
+            "addmetadata": True,
+            "prefer_ffmpeg": False,
+            "geo_bypass": True,
+            "nocheckcertificate": True,
+            "proxy": f"socks5://{FIXIE_SOCKS_HOST}",
+            "postprocessors": [{'key': 'FFmpegExtractAudio', 'preferredcodec': 'flac', 'preferredquality': '824'}],
+             }
+             try:
+                 video = ydl.extract_info(f"ytsearch:{query}", download=False)['entries'][0]['id']
+                 info = ydl.extract_info(video)
+                filename = ydl.prepare_filename(info)
+                return f"{filename}.flac"
+             except Exception as e:
+                 print(e)
 @sync_to_async
 def copy(P,A):
     P.copy(BUG)
