@@ -14,7 +14,8 @@
 ![1000003315](https://github.com/Masterolic/Spotify-Downloader/assets/93469093/2dbd5d1a-7ee6-47c5-af19-e839d30e778d)
 
 ### HOW TO ADD FFMPEG AND PYTHON IN HEROKU 
-ffmpeg buildpack  url [click here](https://elements.heroku.com/buildpacks/jonathanong/heroku-buildpack-ffmpeg-latest)
+ffmpeg buildpack  url [click here]
+![1244483](https://elements.heroku.com/buildpacks/jonathanong/heroku-buildpack-ffmpeg-latest)
 ![1000003319](https://github.com/Masterolic/Spotify-Downloader/assets/93469093/6a0c1c9c-4c91-4bac-b6fb-0a40d5516e3c)
 ![1000003317](https://github.com/Masterolic/Spotify-Downloader/assets/93469093/27b69fc4-5e50-461e-9d99-1c20b1fbc21e)
 
