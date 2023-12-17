@@ -4,14 +4,11 @@
 ### IS THIS STILL MAINTAINING?
 > Yes ,this repository is still maintained and will be adding new feature's also
 ### WHY AUDIO FILES ARE NOT SENDING?
-> Make Sure That Ffmpeg is Installed!
-> If Your Vps/Local Server Location Is US Try To Change Location Or Use Cookies And Add This Line ["cookiefile":"path",](https://github.com/Masterolic/Spotify-Downloader/blob/fe859965e62a5ca8f29fc69185cd132d456e4bfd/mbot/utils/mainhelper.py#L144)
+> Make Sure That Ffmpeg is Installed! And Check Logs For More Details Check Below Image To Add Ffmpeg If You Are Using Heroku
+> ![IMG_20231217_163545](https://github.com/Masterolic/Spotify-Downloader/assets/93469093/0fbe0591-771a-460b-be69-3fb60536d44d)
+### Why YouTube 403 Forbidden Shows In My Logs? 
+> When Your Vps/Local Server Get Blocked By YouTube Try  Changing Ip Address Or Use Proxy By Filling Variable ```FIXIE_SOCKS_HOST``` Or Change Location Or Use Cookies And Add This Line ["cookiefile":"path",](https://github.com/Masterolic/Spotify-Downloader/blob/fe859965e62a5ca8f29fc69185cd132d456e4bfd/mbot/utils/mainhelper.py#L144)
 > path is defined as where is your cookie file to get cookie reffer [here](https://www.reddit.com/r/youtubedl/wiki/cookies/)
-> US Region Block yt-dlp Request
-
-### DO YOU USE HEROKU TO DEPLOY?
-> Make Sure That To Change Region To Europe Else It Wont Work See Below Image
-![1000003315](https://github.com/Masterolic/Spotify-Downloader/assets/93469093/2dbd5d1a-7ee6-47c5-af19-e839d30e778d)
 
 ### HOW TO ADD FFMPEG AND PYTHON IN HEROKU 
 ffmpeg buildpack  url [click here]
