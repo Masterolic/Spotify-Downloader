@@ -1,4 +1,4 @@
-### This download from saavn.me an unofficial api
+### This download from saavn.dev an unofficial api
 from pyrogram import Client,filters
 import requests,os,wget 
 @Client.on_message(filters.command('saavn') & filters.text)
@@ -12,7 +12,7 @@ async def song(client, message):
         return ""
     pak = await message.reply('Downloading...')
     try:
-        r = requests.get(f"https://saavn.me/search/songs?query={args}&page=1&limit=1").json()
+        r = requests.get(f"https://saavn.dev/search/songs?query={args}&page=1&limit=1").json()
     except Exception as e:
         await pak.edit(str(e))
         return
