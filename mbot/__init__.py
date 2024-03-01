@@ -83,7 +83,7 @@ class Mbot(Client):
         super().__init__(
             ":memory:",
             plugins=dict(root=f"{name}/plugins"),
-            workdir="./cache/",
+            workdir= " ", #"./cache/",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
